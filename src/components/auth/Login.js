@@ -15,9 +15,10 @@ export const Login = () => {
             .then(foundUsers => {
                 if (foundUsers.length === 1) {
                     const user = foundUsers[0]
-                    localStorage.setItem("project_user", JSON.stringify({
+                    localStorage.setItem("scary_user", JSON.stringify({
                         id: user.id,
-                        staff: user.staff
+                        fullName: user.fullName,
+                        email: user.email
                     }))
 
                     navigate("/")
