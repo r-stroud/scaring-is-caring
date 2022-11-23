@@ -1,0 +1,61 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(29, 22, 22);
+    color: white;
+    height: 60px;
+}
+
+.appTitle {
+    background-image: linear-gradient(to right, rgb(177, 53, 53) 50%, rgb(192, 192, 212) 50%);
+    background-clip: text;
+    background-size: 200% 100%;
+    background-position: right bottom;
+    color: transparent;
+    font-size: 30px;
+    align-self: center;
+    animation-name: colorChange;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+
+
+@keyframes colorChange {
+    from {
+        background-position: right bottom;
+    }
+
+    to {
+        background-position: left bottom;
+    }
+
+}
+
+.navLinks {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.navLinks div:hover {
+    color: rgb(177, 53, 53);
+}
+
+.navLinks div {
+    margin: 0 5vw 0 0;
+}
+
+.profileAndLogout {
+    display: flex;
+}
+
+.profile {
+    justify-self: end;
+    align-self: center;
+}
+
+.logout {
+    margin: 0 1vw 0 3vw;
+    align-self: center;
+}

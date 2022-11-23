@@ -3,6 +3,7 @@ import { Authorized } from "./views/Authorized"
 import { ApplicationViews } from "./views/ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { Navbar } from "./nav/Navbar"
 
 
 export const ScaringIsCaring = () => {
@@ -13,6 +14,7 @@ export const ScaringIsCaring = () => {
         <Route path="*" element={
             <Authorized>
                 <>
+                    <Navbar />
                     <ApplicationViews />
                 </>
             </Authorized>

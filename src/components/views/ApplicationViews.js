@@ -1,11 +1,7 @@
 export const ApplicationViews = () => {
 
-    const localProjectUser = localStorage.getItem("project_user")
+    const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
 
-    if (projectUserObject.staff) {
-        return "<h1>Staff Views</h1>"
-    } else {
-        return "<h1>Patron Views</h1>"
-    }
+    return (<h1>Application Views</h1>)
 }
