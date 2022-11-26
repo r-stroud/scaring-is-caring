@@ -1,0 +1,26 @@
+.homePage {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: red;
+}
+
+.selections {
+    background-image: url("../capstone-images/horror-texture5.jpg");
+    width: 50%;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.selections div {
+    background-image: url("../capstone-images/bones.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 420px;
+    height: 240px;
+    color: white;
+    margin: 20px auto;
+    box-shadow: 2px 2px 5px 2px black;
+
+
+}
