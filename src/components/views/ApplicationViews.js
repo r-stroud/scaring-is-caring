@@ -1,7 +1,21 @@
+import "./ApplicationViews.css"
+import { Navigate, Route, Routes } from "react-router-dom"
+import { Collections } from "../collections/Collections"
+import { Welcome } from "../welcome/Welcome"
+
 export const ApplicationViews = () => {
+
+
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
 
-    return (<h1>Application Views</h1>)
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/collections" element={<Collections />} />
+            </Routes>
+        </>
+    )
 }
