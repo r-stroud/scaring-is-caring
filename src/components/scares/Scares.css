@@ -5,14 +5,12 @@
 
 .scareContainer {
     margin: auto;
-    /* display: flex; */
     justify-content: center;
     width: 280px;
 }
 
 .scareBackground {
     height: 360px;
-    /* background-image: url("../capstone-images/hereditary-movie.jpg"); */
     background-size: cover;
     background-position: bottom;
     position: relative;
@@ -51,36 +49,14 @@
 
 .heart {
     width: 30px;
-    transform: rotate(15deg)
+    transform: rotate(15deg);
+    filter: grayscale(100%) brightness(10%);
 }
 
-.userRating {
-    animation-name: ratingDisplayOn;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+/* .heart:hover {
+    filter: grayscale(0%) brightness(100%);
 }
-
-@keyframes ratingDisplayOn {
-    0% {
-        display: none;
-    }
-
-    100% {
-        display: block;
-    }
-
-}
-
-@keyframes ratingDisplayOff {
-    0% {
-        display: block;
-    }
-
-    100% {
-        display: none;
-    }
-}
-
+ */
 
 
 .scare {
@@ -100,18 +76,17 @@
 .description {
     position: absolute;
     top: 0px;
-    /* bottom: 100px; */
 }
 
-/* .userRating {
+.userRating {
     position: absolute;
-    bottom: 150px;
+    top: 170px;
 }
 
 .avgRating {
     position: absolute;
-    bottom: 125px;
-} */
+    top: 225px;
+}
 
 .comments {
     position: absolute;
