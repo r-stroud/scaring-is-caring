@@ -1,16 +1,37 @@
-.scareList {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.scareContainer {
+/* .scareContainer {
     margin: auto;
     justify-content: center;
     width: 280px;
+} */
+
+
+
+.collectionsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly
+}
+
+.collectionItem {
+    height: 460px;
+    width: 280px;
+}
+
+.scareContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.recentScares {
+    height: 240px;
+    width: 160px;
+    color: black;
+    font-size: 14px;
 }
 
 .scareBackground {
-    height: 360px;
+    height: 85%;
+    width: 100%;
     background-size: cover;
     background-position: bottom;
     position: relative;
@@ -22,7 +43,8 @@
 .scareHeader {
     background-color: black;
     color: white;
-    height: 100px;
+    /* height: 100px; */
+    height: 15%;
     position: relative;
     z-index: 10;
 }
@@ -33,11 +55,15 @@
 }
 
 .icon {
-    width: 73px;
+    width: 26%;
     filter: invert(100%);
     position: relative;
     bottom: 12px;
     left: 7px;
+}
+
+.recentScares .icon {
+    bottom: 9px;
 }
 
 .game {
@@ -53,11 +79,9 @@
     filter: grayscale(100%) brightness(10%);
 }
 
-/* .heart:hover {
-    filter: grayscale(0%) brightness(100%);
+.recentScares .heart {
+    width: 18px;
 }
- */
-
 
 .scare {
     border: 1px black solid;
@@ -76,11 +100,31 @@
 .description {
     position: absolute;
     top: 0px;
+
 }
+
+.description div {
+    border: 1px solid black;
+    height: 140px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 95%;
+    margin: auto;
+}
+
+.recentScares .description div {
+    height: 60px;
+    font-size: 12px;
+}
+
 
 .userRating {
     position: absolute;
     top: 170px;
+}
+
+.recentScares .userRating {
+    top: 84px;
 }
 
 .avgRating {
@@ -88,9 +132,17 @@
     top: 225px;
 }
 
+.recentScares .avgRating {
+    top: 120px;
+}
+
 .comments {
     position: absolute;
     bottom: 50px;
+}
+
+.recentScares .comments {
+    top: 160px;
 }
 
 .recommend {

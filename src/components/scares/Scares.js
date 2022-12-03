@@ -1,20 +1,37 @@
 import "./Scares.css"
 import { useState, useEffect } from "react"
 
-export const Scares = ({ id, name, img, details, type, creatorId, creatorName }) => {
 
-    const [scares, setScares] = useState([])
+export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName }) => {
+
+
+    const [types, setTypes] = useState([])
+    const [filterTypes, setFilterTypes] = useState([])
     const [height, setHeight] = useState(false)
 
     useEffect(
         () => {
-            const fetchScares = async () => {
-                const fetchData = await fetch(`http://localhost:8088/scares?_expand=scareTypes&_expand=users`)
+            const fetchTypes = async () => {
+                const fetchData = await fetch(`http://localhost:8088/scareTypes`)
                 const fetchJson = await fetchData.json()
-                setScares(fetchJson)
+                setTypes(fetchJson)
             }
+            fetchTypes()
         }, []
     )
+
+
+    useEffect(
+        () => {
+            if (types.length > 0) {
+                const copy = types.map(x => ({ ...x }))
+                const copyTypes = copy.filter(x => x.id === typeId)
+                const copyTypeName = copyTypes[0].type
+                setFilterTypes(copyTypeName)
+            }
+        }, [types]
+    )
+
 
     const rate = (num) => {
 
@@ -137,13 +154,15 @@ export const Scares = ({ id, name, img, details, type, creatorId, creatorName })
                             document.getElementById(`scareBackground--${id}`).style.height = "0px"
                             document.getElementById(`scareBackground--${id}`).style.transitionDelay = "0s"
                             document.getElementById(`scare--${id}`).style.transitionDelay = "1s"
-                            document.getElementById(`scare--${id}`).style.height = "360px"
+                            document.getElementById(`scare--${id}`).style.height = "85%"
+                            // heightSTDdetails()
                             setHeight(!height)
                         } else {
-                            document.getElementById(`scareBackground--${id}`).style.height = "360px"
+                            document.getElementById(`scareBackground--${id}`).style.height = "85%"
                             document.getElementById(`scareBackground--${id}`).style.transitionDelay = "1s"
                             document.getElementById(`scare--${id}`).style.transitionDelay = "0s"
                             document.getElementById(`scare--${id}`).style.height = "0px"
+                            // heightSTDcover()
                             setHeight(!height)
                         }
 
@@ -152,9 +171,9 @@ export const Scares = ({ id, name, img, details, type, creatorId, creatorName })
                     }}>
                     <section className="scareNameIcon">
                         <div>{name.toUpperCase()}</div>
-                        {type === "film" ? <img className="icon film" src={require("../capstone-images/film-removebg-preview.png")} /> : <></>}
-                        {type === "book" ? <img className="icon book" src={require("../capstone-images/book-removebg-preview.png")} /> : <></>}
-                        {type === "video game" ? <img className="icon game" src={require("../capstone-images/game-removebg-preview.png")} /> : <></>}
+                        {filterTypes === "film" ? <img className="icon film" src={require("../capstone-images/film-removebg-preview.png")} /> : <></>}
+                        {filterTypes === "book" ? <img className="icon book" src={require("../capstone-images/book-removebg-preview.png")} /> : <></>}
+                        {filterTypes === "video game" ? <img className="icon game" src={require("../capstone-images/game-removebg-preview.png")} /> : <></>}
                     </section>
 
                 </section>
@@ -166,7 +185,8 @@ export const Scares = ({ id, name, img, details, type, creatorId, creatorName })
                     <div className="scareType"></div>
                     <div className="viewed"></div>
 
-                    <div className="description" id={`description--${id}`}>{details}</div>
+                    <div className="description" id={`description--${id}`}>
+                        SYNOPSIS:<div>{details}</div></div>
                     <section className="ratings">
                         <div className="userRating">USER RATING:
                             <div className="heartRating">

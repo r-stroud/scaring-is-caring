@@ -1,13 +1,9 @@
 .homePage {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     background-color: red;
-}
-
-.selections {
-    background-image: url("../capstone-images/horror-texture5.jpg");
-    width: 50%;
-
+    background-image: url("../capstone-images/horror-background.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -21,6 +17,39 @@
     color: white;
     margin: 20px auto;
     box-shadow: 2px 2px 5px 2px black;
+    border: 5px rgb(79, 110, 126) solid;
+    border-radius: 2%;
+}
 
+.selection:hover {
+    transform: scale(1.05);
+}
 
+.welcome {
+    width: fit-content;
+    margin: 20px;
+    border: 3px solid rgb(79, 110, 126);
+    padding: 10px 20px 10px 15px;
+    background-color: rgb(30, 33, 34);
+    opacity: .8;
+    color: white;
+    text-align: center;
+}
+
+.welcomeUser {
+    font-size: 33px;
+    margin-bottom: 60px;
+}
+
+.welcomeUser span {
+    color: rgb(189, 8, 8);
+}
+
+.latest {
+    font-size: 20px;
+}
+
+.recentAdditions {
+    display: flex;
+    justify-content: space-evenly;
 }
