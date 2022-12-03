@@ -18,22 +18,27 @@ export const ScaresList = () => {
         }, []
     )
 
+    const test = () => { if (scares.length > 0) { console.log(scares[0].scareTypes.id) } }
+    test()
+
     return (
         <>
             {scares.length > 0 ?
 
-                <div className="scareList">
+                <div className="allScares">
                     {scares.map((scare) => (
                         <>
-                            <Scares
-                                id={scare.id}
-                                name={scare.name}
-                                img={scare.img}
-                                details={scare.details}
-                                type={scare.scareTypes.type}
-                                creatorId={scare.users.id}
-                                creatorName={scare.users.fullName}
-                            />
+                            <div className="allScaresItem">
+                                <Scares
+                                    id={scare.id}
+                                    name={scare.name}
+                                    img={scare.img}
+                                    details={scare.details}
+                                    typeId={scare.scareTypes.id}
+                                    creatorId={scare.users.id}
+                                    creatorName={scare.users.fullName}
+                                />
+                            </div>
                         </>
 
                     ))}

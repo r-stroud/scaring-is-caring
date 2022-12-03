@@ -4,7 +4,17 @@
     width: 280px;
 } */
 
+.allScares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
 
+.allScaresItem {
+    height: 460px;
+    width: 280px;
+}
 
 .collectionsList {
     display: flex;
@@ -63,14 +73,18 @@
 }
 
 .recentScares .icon {
-    bottom: 9px;
+    bottom: 8px;
 }
 
 .game {
-    width: 50px;
+    width: 19%;
     bottom: 0px;
     left: -7px;
     filter: invert(90%)
+}
+
+.recentScares .game {
+    bottom: 1px;
 }
 
 .heart {
