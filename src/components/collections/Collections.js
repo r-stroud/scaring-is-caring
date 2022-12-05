@@ -40,16 +40,22 @@ export const Collections = () => {
                 <div className="collectionsList">
                     {filterScares.map((scare) => (
                         <>
-                            <div className="collectionItem">
-                                <Scares
-                                    id={scare.scaresId}
-                                    name={scare.scares.name}
-                                    img={scare.scares.img}
-                                    details={scare.scares.details}
-                                    typeId={scare.scares.scareTypesId}
-                                    creatorId={scare.usersId}
-                                    creatorName={scare.users.fullName}
-                                />
+                            <div className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" style={{ backgroundImage: `url(${scare.scares.img})` }}>
+                                <section className="options">
+                                    <div>ADD ITEM</div>
+                                    <div>RECOMMEND</div>
+                                </section>
+                                <div className="collectionItem">
+                                    <Scares
+                                        id={scare.scaresId}
+                                        name={scare.scares.name}
+                                        img={scare.scares.img}
+                                        details={scare.scares.details}
+                                        typeId={scare.scares.scareTypesId}
+                                        creatorId={scare.usersId}
+                                        creatorName={scare.users.fullName}
+                                    />
+                                </div>
                             </div>
                         </>
 

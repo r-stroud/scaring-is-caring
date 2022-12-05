@@ -25,7 +25,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
         () => {
             if (types.length > 0) {
                 const copy = types.map(x => ({ ...x }))
-                const copyTypes = copy.filter(x => x.id === typeId)
+                const copyTypes = copy.filter(x => x.id === parseInt(typeId))
                 const copyTypeName = copyTypes[0].type
                 setFilterTypes(copyTypeName)
             }
@@ -147,7 +147,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
 
     return (
         <>
-            <section className="scareContainer">
+            <section className="scareContainers">
                 <section className="scareHeader" onClick={
                     () => {
                         if (!height) {
@@ -182,7 +182,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
                 </section>
                 <section className="scare" id={`scare--${id}`}>
 
-                    <div className="scareType"></div>
                     <div className="viewed"></div>
 
                     <div className="description" id={`description--${id}`}>

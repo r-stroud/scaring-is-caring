@@ -1,0 +1,80 @@
+.form-preview {
+    width: 48%;
+    margin: auto;
+    position: relative;
+    top: -30px;
+    border: solid black 1px;
+    padding: 10px 50px;
+    border-radius: 1%;
+    background-color: rgb(197, 46, 46);
+}
+
+.preview-container {
+    box-shadow: 2px 2px 5px 1px black;
+}
+
+.scarePreview {
+    border: solid black 1px;
+    height: 245px;
+    margin: 0px 0 10px;
+    background-color: white;
+
+}
+
+.header {
+    background-color: black;
+    color: white;
+    height: 50px;
+    position: relative;
+    z-index: 500;
+}
+
+.background {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.prev-icon {
+    width: 40px;
+    filter: invert(100%);
+    position: relative;
+    bottom: 18px;
+    left: 148px;
+}
+
+.prev-film,
+.prev-book {
+    width: 63px;
+    filter: invert(100%);
+    position: relative;
+    bottom: 30px;
+    left: 140px;
+}
+
+.prev-description div {
+    border: 1px solid black;
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 95%;
+    margin: auto;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+#preview-h1 {
+    font-size: 20px;
+    margin: 60px;
+    position: relative;
+    top: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0px;
+}

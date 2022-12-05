@@ -3,6 +3,7 @@ import "../scares/Scares.css"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Scares } from "../scares/Scares"
+import { AddNew } from "../forms/AddNew"
 
 export const Welcome = () => {
 
@@ -42,7 +43,7 @@ export const Welcome = () => {
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                const filteredCopy = copy.filter(x => x.scares.scareTypesId === 1)
+                const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 1)
                 const lastElement = filteredCopy[filteredCopy.length - 1]
                 setFilterLatestFilm([lastElement])
             }
@@ -53,7 +54,7 @@ export const Welcome = () => {
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                const filteredCopy = copy.filter(x => x.scares.scareTypesId === 2)
+                const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 2)
                 const lastElement = filteredCopy[filteredCopy.length - 1]
                 setFilterLatestGame([lastElement])
             }
@@ -64,16 +65,42 @@ export const Welcome = () => {
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                const filteredCopy = copy.filter(x => x.scares.scareTypesId === 3)
+                const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 3)
                 const lastElement = filteredCopy[filteredCopy.length - 1]
                 setFilterLatestBook([lastElement])
             }
         }, [filterScares]
     )
 
+    const hideHands = () => {
+        const form = document.getElementById("form")
+        form.style.right = "-600px"
+
+    }
+
+    const showHands = () => {
+        const form = document.getElementById("form")
+        form.style.right = "540px"
+
+    }
+
     return (
         <>
+            <section className="skeletonHands" id="skeletonHands">
+                <div className="form" id="form">
+                    <AddNew />
+                </div>
+            </section>
+            <section className="createNew" id="createNew" onClick={
+                () => {
+                    document.getElementById("createNew").style.display = "none"
+                    hideHands()
+                }}>
+                <div>
+                </div>
+            </section>
             <section className="homePage">
+
                 <section className="selections">
 
                     <div className="selection" onClick={
@@ -139,7 +166,12 @@ export const Welcome = () => {
                         <section>
                             <div className="ready">READY TO ADD MORE?</div>
                             <section className="addMore">
-                                <div>Create New</div>
+                                <div onClick={
+                                    () => {
+                                        document.getElementById("createNew").style.display = "block"
+                                        showHands()
+                                    }
+                                }>Create New</div>
                                 <div onClick={
                                     () => { navigate("/scares") }
                                 }>Search For Exisiting</div>
