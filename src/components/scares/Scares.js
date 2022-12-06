@@ -2,12 +2,18 @@ import "./Scares.css"
 import { useState, useEffect } from "react"
 
 
-export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName }) => {
+export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName, fetchScares }) => {
+
+    const localProjectUser = localStorage.getItem("scary_user")
+    const projectUserObject = JSON.parse(localProjectUser)
 
 
     const [types, setTypes] = useState([])
     const [filterTypes, setFilterTypes] = useState([])
     const [height, setHeight] = useState(false)
+    const [finished, setFinished] = useState([])
+    const [finishedFilter, setFinishedFilter] = useState([])
+
 
     useEffect(
         () => {
@@ -20,6 +26,34 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
         }, []
     )
 
+    const fetchFinished = async () => {
+        const fetchData = await fetch(`http://localhost:8088/finished`)
+        const fetchJson = await fetchData.json()
+        setFinished(fetchJson)
+    }
+
+    useEffect(
+        () => {
+
+            fetchFinished()
+        }, []
+    )
+
+    useEffect(
+        () => {
+
+            const findFinished = () => {
+
+                const copy = finished.map(x => ({ ...x }))
+                if (copy.length > 0) {
+                    const findScare = copy.filter(x => x?.scaresId === id && x?.usersId === projectUserObject?.id)
+                    // console.log(findScare)
+                    setFinishedFilter(findScare)
+                }
+            }
+            findFinished()
+        }, [finished]
+    )
 
     useEffect(
         () => {
@@ -31,6 +65,36 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
             }
         }, [types]
     )
+
+    const addToCollection = async () => {
+
+        const collectionObj = {
+            usersId: projectUserObject.id,
+            scaresId: id
+        }
+
+
+        const fetchData = await fetch(`http://localhost:8088/finished`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(collectionObj)
+        })
+
+        fetchFinished()
+
+    }
+
+    const deleteFromCollection = async () => {
+        if (finishedFilter.length > 0) {
+            const findMatch = finishedFilter.find(x => x.scaresId === id)
+            const fetchData = await fetch(`http://localhost:8088/finished/${findMatch.id}`, {
+                method: "DELETE"
+            })
+        }
+
+        fetchFinished()
+        fetchScares()
+    }
 
 
     const rate = (num) => {
@@ -185,7 +249,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
                     <div className="viewed"></div>
 
                     <div className="description" id={`description--${id}`}>
-                        SYNOPSIS:<div>{details}</div></div>
+                        <span>SYNOPSIS:</span><div>{details}</div></div>
                     <section className="ratings">
                         <div className="userRating">USER RATING:
                             <div className="heartRating">
@@ -222,8 +286,30 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName 
                             </div>
                         </div>
                     </section>
-                    <div className="comments">COMMENTS</div>
-                    <div className="recommend">RECOMMEND</div>
+                    {/* <div className="comments">COMMENTS</div>
+                    <div className="recommend">RECOMMEND</div> */}
+                    <section className="options">
+                        <div>RECOMMEND</div>
+                        {finishedFilter.length > 0 ?
+                            <section className="collections">
+                                <div className="collected">COLLECTED</div>
+                                <div className="remove"
+                                    onClick={
+                                        () => {
+                                            deleteFromCollection()
+                                        }
+                                    }
+                                >REMOVE</div>
+                            </section> :
+
+                            <div onClick={
+                                () => {
+                                    addToCollection()
+
+                                }
+                            }>ADD TO COLLECTION</div>}
+
+                    </section>
 
                 </section>
             </section>

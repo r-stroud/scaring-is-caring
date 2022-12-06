@@ -10,15 +10,15 @@ export const Collections = () => {
     const [scares, setScares] = useState([])
     const [filterScares, setFilterScares] = useState([])
 
+    const fetchScares = async () => {
+        const fetchData = await fetch(`http://localhost:8088/finished?_expand=users&_expand=scares`)
+        const fetchJson = await fetchData.json()
+        setScares(fetchJson)
+    }
+
     useEffect(
         () => {
-            const fetchScares = async () => {
-                const fetchData = await fetch(`http://localhost:8088/finished?_expand=users&_expand=scares`)
-                const fetchJson = await fetchData.json()
-                setScares(fetchJson)
-            }
             fetchScares()
-
         }, []
     )
 
@@ -40,11 +40,7 @@ export const Collections = () => {
                 <div className="collectionsList">
                     {filterScares.map((scare) => (
                         <>
-                            <div className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" style={{ backgroundImage: `url(${scare.scares.img})` }}>
-                                <section className="options">
-                                    <div>ADD ITEM</div>
-                                    <div>RECOMMEND</div>
-                                </section>
+                            <div className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" >
                                 <div className="collectionItem">
                                     <Scares
                                         id={scare.scaresId}
@@ -54,6 +50,7 @@ export const Collections = () => {
                                         typeId={scare.scares.scareTypesId}
                                         creatorId={scare.usersId}
                                         creatorName={scare.users.fullName}
+                                        fetchScares={fetchScares}
                                     />
                                 </div>
                             </div>

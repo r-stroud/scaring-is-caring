@@ -18,8 +18,7 @@ export const ScaresList = () => {
         }, []
     )
 
-    const test = () => { if (scares.length > 0) { console.log(scares[0].scareTypes.id) } }
-    test()
+    const blankFunction = () => { return "" }
 
     return (
         <>
@@ -28,25 +27,25 @@ export const ScaresList = () => {
                 <div className="allScares">
                     {scares.map((scare) => (
                         <>
-                            <div className="allScaresItem-bckgrnd" id="allScaresItem-bckgrnd" style={{ backgroundImage: `url(${scare.img})` }}>
-                                <section className="options">
-                                    <div>ADD ITEM</div>
-                                    <div>RECOMMEND</div>
-                                </section>
-                                <div className="allScaresItem">
+                            <section>
+                                <div className="allScaresItem-bckgrnd" id="allScaresItem-bckgrnd" >
 
-                                    <Scares
-                                        id={scare.id}
-                                        name={scare.name}
-                                        img={scare.img}
-                                        details={scare.details}
-                                        typeId={parseInt(scare.scareTypes.id)}
-                                        creatorId={scare.users.id}
-                                        creatorName={scare.users.fullName}
-                                    />
+                                    <div className="allScaresItem">
 
+                                        <Scares
+                                            id={scare.id}
+                                            name={scare.name}
+                                            img={scare.img}
+                                            details={scare.details}
+                                            typeId={parseInt(scare.scareTypes.id)}
+                                            creatorId={scare.users.id}
+                                            creatorName={scare.users.fullName}
+
+                                        />
+
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
                         </>
 
                     ))}
