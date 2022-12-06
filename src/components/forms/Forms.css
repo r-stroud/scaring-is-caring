@@ -1,0 +1,66 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle {
+    font-size: 20px;
+    font-weight: 650;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.formTitles {
+    margin-top: 20px;
+}
+
+#scareForm {
+    border: 1px solid black;
+    width: 60%;
+    margin: 20px auto;
+    padding: 10px 50px;
+
+}
+
+#scareForm label {
+    padding-right: 10px;
+    display: block;
+}
+
+#scareForm textarea {
+    padding: 10px;
+    resize: none;
+    width: 300px;
+    height: 300px;
+    overflow-y: scroll;
+    position: relative;
+
+}
+
+.preview {
+    position: relative;
+    height: 770px;
+    width: 400px;
+    background-color: rgb(219, 70, 70);
+    bottom: 1146px;
+    right: -610px;
+    z-index: 199;
+    transition: 1s;
+    border-radius: 1%;
+    box-shadow: 2px 2px 5px 2px black;
+    ;
+}
+
+.skeletonHands {
+    position: relative;
+    top: -799px;
+    left: 550px;
+    z-index: 200;
+    transition: 1s;
+}
+
+.submit-btn {
+    width: 100px;
+    margin-top: 30px;
+}

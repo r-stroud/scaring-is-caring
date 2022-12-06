@@ -1,0 +1,10 @@
+.collectionsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly
+}
+
+.collectionItem {
+    height: 460px;
+    background-color: blue;
+}

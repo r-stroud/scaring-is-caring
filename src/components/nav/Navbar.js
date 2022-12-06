@@ -9,8 +9,12 @@ export const Navbar = () => {
         <nav>
             <section className="appTitle">SCARING IS CARING</section>
             <section className="navLinks">
-                <div>TBD1</div>
-                <div>TBD2</div>
+                <div onClick={
+                    () => { navigate("/") }
+                }>HOME</div>
+                <div onClick={
+                    () => { navigate("/scares") }
+                }>SCARES</div>
                 <div>TBD3</div>
                 <div>TBD4</div>
             </section>

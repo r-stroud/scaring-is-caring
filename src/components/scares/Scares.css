@@ -1,0 +1,249 @@
+/* .scareContainer {
+    margin: auto;
+    justify-content: center;
+    width: 280px;
+} */
+
+.allScares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.allScaresItem {
+    height: 485px;
+    width: 280px;
+    padding: 0px 0px 0px;
+    /* border: solid rgb(37, 34, 34) 3px; */
+    border-radius: 1%;
+    margin: 0 5px 30px 5px;
+    position: relative;
+    left: 0px;
+    bottom: 2px;
+}
+
+/* .allScaresItem-bckgrnd {
+    height: 445px;
+    width: 250px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../capstone-images/skullpile.jpg");
+    background-size: cover;
+    margin: 0 10px 10px;
+} */
+
+.collectionsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.collectionItem {
+    height: 485px;
+    width: 280px;
+    margin: 0 5px 30px 5px;
+    padding: 55px 30px 30px;
+    /* border: 1px solid black; */
+    border-radius: 1%;
+    position: relative;
+    left: -7px;
+    bottom: 43px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 12px;
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+    border-top: solid rgb(23, 22, 22) 3px;
+    /* border-bottom: 5px solid black; */
+    margin: auto;
+    /* background: linear-gradient(140deg, rgb(189, 20, 20), rgb(55, 3, 3)); */
+    background-image: url("../capstone-images/skullpile.jpg");
+    background-size: cover;
+    border-radius: 2%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.recentScares .options {
+    font-size: 8px;
+    text-align: left;
+}
+
+.options div {
+    background-color: white;
+    border: black solid 1px;
+    margin: 5px;
+    padding: 4px 6px;
+    border-radius: 5%;
+    box-shadow: 1px 1px 3px 1px rgb(37, 35, 35);
+    height: 20%;
+    width: 50%;
+}
+
+.options div:hover {
+    background-color: rgb(177, 53, 53);
+    color: white;
+}
+
+.scareContainers {
+    height: 100%;
+    width: 100%;
+
+}
+
+.recentScares {
+    height: 280px;
+    width: 160px;
+    color: black;
+    font-size: 14px;
+}
+
+.scareBackground {
+    height: 85%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+    z-index: 1;
+    transition: 1s;
+    /* box-shadow: 2px 2px 5px 1px black; */
+}
+
+.scareHeader {
+    background-color: rgb(23, 22, 22);
+    color: white;
+    /* height: 100px; */
+    height: 15%;
+    position: relative;
+    z-index: 10;
+    /* box-shadow: 2px 0px 5px 1px black; */
+}
+
+.scareNameIcon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 26%;
+    filter: invert(100%);
+    position: relative;
+    bottom: 12px;
+    left: 7px;
+}
+
+.recentScares .icon {
+    bottom: 8px;
+}
+
+.game {
+    width: 19%;
+    bottom: 0px;
+    left: -7px;
+    filter: invert(90%)
+}
+
+.recentScares .game {
+    bottom: 1px;
+}
+
+.heart {
+    width: 30px;
+    transform: rotate(15deg);
+    filter: grayscale(100%) brightness(10%);
+}
+
+.recentScares .heart {
+    width: 18px;
+}
+
+.scare {
+    border: 1px black solid;
+    background-color: white;
+    height: 00px;
+    position: relative;
+    text-overflow: nowrap;
+    transition: 1s;
+    transition-delay: 2s;
+    z-index: 0;
+    overflow: hidden;
+    /* box-shadow: 2px 2px 5px 1px black; */
+}
+
+.collections {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.collections div {
+    height: 45%;
+}
+
+.collections .collected {
+    width: 50%;
+}
+
+.collections .remove {
+    width: 25%;
+    text-align: center;
+}
+
+.description {
+    position: absolute;
+    top: 0px;
+    width: 95%;
+    text-align: left;
+}
+
+.description div {
+    border: 1px solid black;
+    height: 140px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 95%;
+    margin: auto;
+}
+
+.recentScares .description div {
+    height: 60px;
+    font-size: 12px;
+}
+
+
+.userRating {
+    position: absolute;
+    top: 170px;
+}
+
+.recentScares .userRating {
+    top: 84px;
+}
+
+.avgRating {
+    position: absolute;
+    top: 225px;
+}
+
+.recentScares .avgRating {
+    top: 120px;
+}
+
+/* .comments {
+    position: absolute;
+    bottom: 50px;
+}
+
+.recentScares .comments {
+    top: 160px;
+} */
+
+/* .recommend {
+    position: absolute;
+    bottom: 00px;
+} */
