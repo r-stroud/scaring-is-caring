@@ -6,13 +6,16 @@ export const ScaresList = () => {
 
     const [scares, setScares] = useState([])
 
+
+    const fetchScares = async () => {
+        const fetchData = await fetch(`http://localhost:8088/scares?_expand=scareTypes&_expand=users`)
+        const fetchJson = await fetchData.json()
+        setScares(fetchJson)
+    }
+
     useEffect(
         () => {
-            const fetchScares = async () => {
-                const fetchData = await fetch(`http://localhost:8088/scares?_expand=scareTypes&_expand=users`)
-                const fetchJson = await fetchData.json()
-                setScares(fetchJson)
-            }
+
             fetchScares()
 
         }, []
@@ -40,6 +43,7 @@ export const ScaresList = () => {
                                             typeId={parseInt(scare.scareTypes.id)}
                                             creatorId={scare.users.id}
                                             creatorName={scare.users.fullName}
+                                            fetchScares={fetchScares}
 
                                         />
 

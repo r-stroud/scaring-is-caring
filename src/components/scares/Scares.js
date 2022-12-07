@@ -96,6 +96,15 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
         fetchScares()
     }
 
+    const permanentDelete = async () => {
+        const fetchData = await fetch(`http://localhost:8088/scares/${id}`, {
+            method: "DELETE"
+        })
+        fetchFinished()
+        fetchScares()
+
+    }
+
 
     const rate = (num) => {
 
@@ -308,6 +317,15 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
 
                                 }
                             }>ADD TO COLLECTION</div>}
+                        <section className="permanent-edits">
+                            {creatorId === projectUserObject.id ? <>
+                                <div className="perm-edit">EDIT SCARE</div>
+                                <div className="perm-delete" onClick={
+                                    () => { permanentDelete() }
+                                }>DELETE</div>
+                            </> : <></>}
+
+                        </section>
 
                     </section>
 
