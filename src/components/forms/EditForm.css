@@ -1,0 +1,25 @@
+.edit-container {
+    /* position: fixed; */
+    flex-wrap: wrap;
+    display: flex;
+    /* right: 50%;
+    width: 100%; */
+    z-index: 100;
+    /* bottom: 18.2vh; */
+    position: relative;
+    /* right: 20px; */
+    margin: auto;
+}
+
+.edit-form {
+    width: 300px;
+    height: 545px;
+    margin: 5px;
+    color: white;
+    background-color: blue;
+    border: 1px black solid;
+    font-size: 26px;
+    text-align: center;
+    padding-top: 10px;
+
+}

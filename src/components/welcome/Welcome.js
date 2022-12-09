@@ -174,7 +174,7 @@ export const Welcome = () => {
                                 }><span>+</span> CREATE NEW</div>
                                 <div onClick={
                                     () => { navigate("/scares") }
-                                }>SEARCH FOR EXISTING</div>
+                                }>SEARCH EXISTING</div>
                             </section>
                         </section>
                     </section>

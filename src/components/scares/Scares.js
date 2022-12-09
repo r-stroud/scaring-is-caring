@@ -1,6 +1,7 @@
 import "./Scares.css"
-import { useState, useEffect } from "react"
+import { EditForm } from "../forms/EditForm"
 
+import { useState, useEffect } from "react"
 
 export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName, fetchScares }) => {
 
@@ -13,7 +14,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
     const [height, setHeight] = useState(false)
     const [finished, setFinished] = useState([])
     const [finishedFilter, setFinishedFilter] = useState([])
-
+    const [showEdit, setShowEdit] = useState(false)
 
     useEffect(
         () => {
@@ -47,7 +48,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                 const copy = finished.map(x => ({ ...x }))
                 if (copy.length > 0) {
                     const findScare = copy.filter(x => x?.scaresId === id && x?.usersId === projectUserObject?.id)
-                    // console.log(findScare)
                     setFinishedFilter(findScare)
                 }
             }
@@ -220,7 +220,34 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
 
     return (
         <>
-            <section className="scareContainers">
+            {showEdit ?
+                <>
+                    <section id={`blur-scares--${id}`} className="blur-scares" onClick={
+                        () => {
+                            setShowEdit(!showEdit)
+                        }
+                    }>
+                        <div></div>
+                    </section>
+
+                    <section className="edit-form-container" id={`edit-form--${id}`}>
+
+                        <EditForm
+                            editId={id}
+                            editName={name}
+                            editImg={img}
+                            editDetails={details}
+                            editTypeId={typeId}
+                            editCreatorId={creatorId}
+                            editCreatorName={creatorName}
+                        />  </section>
+                </> : <></>}
+
+
+
+            <section className="scareContainers" id={`scareContainers--${id}`}>
+
+
                 <section className="scareHeader" onClick={
                     () => {
                         if (!height) {
@@ -228,14 +255,12 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                             document.getElementById(`scareBackground--${id}`).style.transitionDelay = "0s"
                             document.getElementById(`scare--${id}`).style.transitionDelay = "1s"
                             document.getElementById(`scare--${id}`).style.height = "85%"
-                            // heightSTDdetails()
                             setHeight(!height)
                         } else {
                             document.getElementById(`scareBackground--${id}`).style.height = "85%"
                             document.getElementById(`scareBackground--${id}`).style.transitionDelay = "1s"
                             document.getElementById(`scare--${id}`).style.transitionDelay = "0s"
                             document.getElementById(`scare--${id}`).style.height = "0px"
-                            // heightSTDcover()
                             setHeight(!height)
                         }
 
@@ -251,6 +276,8 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
 
                 </section>
                 <section className="scareBackground" id={`scareBackground--${id}`} style={{ backgroundImage: `url(${img})` }} >
+
+
 
                 </section>
                 <section className="scare" id={`scare--${id}`}>
@@ -319,7 +346,13 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                             }>ADD TO COLLECTION</div>}
                         <section className="permanent-edits">
                             {creatorId === projectUserObject.id ? <>
-                                <div className="perm-edit">EDIT SCARE</div>
+                                <div className="perm-edit" onClick={
+                                    () => {
+                                        setShowEdit(!showEdit)
+
+                                    }
+                                }>EDIT SCARE</div>
+
                                 <div className="perm-delete" onClick={
                                     () => { permanentDelete() }
                                 }>DELETE</div>
@@ -331,6 +364,9 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
 
                 </section>
             </section>
+
+
+
         </>
     )
 }

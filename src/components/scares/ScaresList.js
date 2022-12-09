@@ -21,13 +21,12 @@ export const ScaresList = () => {
         }, []
     )
 
-    const blankFunction = () => { return "" }
-
     return (
         <>
+
             {scares.length > 0 ?
 
-                <div className="allScares">
+                <div className="allScares" id="allScares">
                     {scares.map((scare) => (
                         <>
                             <section>

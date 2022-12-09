@@ -1,8 +1,20 @@
-/* .scareContainer {
-    margin: auto;
-    justify-content: center;
+.scareContainers {
+    /* position: relative; */
+    height: 485px;
     width: 280px;
-} */
+    top: 28vh;
+    left: -1vw;
+    /* transition: 5s; */
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.recentScares .scareContainers {
+    height: 100%;
+    width: 100%;
+}
 
 .allScares {
     display: flex;
@@ -11,17 +23,16 @@
     padding-top: 170px;
 }
 
-.allScaresItem {
+/* .allScaresItem {
     height: 485px;
     width: 280px;
     padding: 0px 0px 0px;
-    /* border: solid rgb(37, 34, 34) 3px; */
     border-radius: 1%;
     margin: 0 5px 30px 5px;
     position: relative;
     left: 0px;
     bottom: 2px;
-}
+} */
 
 /* .allScaresItem-bckgrnd {
     height: 445px;
@@ -91,13 +102,6 @@
 .options div:hover {
     background-color: rgb(177, 53, 53);
     color: white;
-}
-
-
-.scareContainers {
-    height: 100%;
-    width: 100%;
-
 }
 
 .recentScares {
@@ -257,4 +261,52 @@
 
 .permanent-edits .perm-delete {
     width: 25%;
+}
+
+.blur-scares {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(3px);
+}
+
+.blur-scares div {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(18, 27, 44);
+    opacity: .6;
+    padding-top: 100px;
+
+}
+
+.current-scare .current-header {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.current-scare {
+    padding: 30px;
+    background-color: blue;
+    height: 535px;
+    width: 295px;
+}
+
+.edit-form-container {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    z-index: 100;
+}
+
+h1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 50px;
+    z-index: 500;
 }
