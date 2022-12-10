@@ -1,10 +1,18 @@
-.collectionsList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly
+.collectionsPage {
+    padding-top: 150px;
+    height: 100%;
+    width: 100%;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-attachment: fixed;
 }
 
-.collectionItem {
-    height: 460px;
-    background-color: blue;
+
+.collectionsPage-short {
+    height: 100vh;
+}
+
+@media screen and (max-width: 1775px) {
+    .collectionsPage-short {
+        height: 100%;
+    }
 }

@@ -1,26 +1,48 @@
-/* .scareContainer {
-    margin: auto;
-    justify-content: center;
-    width: 280px;
-} */
+.scares-list {
+    height: 100%;
+    width: 100%;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-attachment: fixed;
+}
+
+.scares-list-short {
+    height: 100vh;
+}
+
+@media screen and (max-width: 1775px) {
+    .scares-list-short {
+        height: 100%;
+    }
+}
+
+.scareContainers {
+    /* height: 485px;
+    width: 280px; */
+    height: 100%;
+    width: 100%;
+    /* top: 28vh; */
+    /* transition: 5s; */
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 20px 8px;
+}
+
+.recentScares .scareContainers {
+    height: 100%;
+    width: 100%;
+}
 
 .allScares {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-top: 100px;
+    padding-top: 170px;
 }
 
 .allScaresItem {
     height: 485px;
     width: 280px;
-    padding: 0px 0px 0px;
-    /* border: solid rgb(37, 34, 34) 3px; */
-    border-radius: 1%;
-    margin: 0 5px 30px 5px;
-    position: relative;
-    left: 0px;
-    bottom: 2px;
 }
 
 /* .allScaresItem-bckgrnd {
@@ -44,25 +66,17 @@
     width: 280px;
     margin: 0 5px 30px 5px;
     padding: 55px 30px 30px;
-    /* border: 1px solid black; */
-    border-radius: 1%;
-    position: relative;
-    left: -7px;
-    bottom: 43px;
 }
 
 .options {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     font-size: 12px;
     width: 100%;
-    height: 20%;
-    padding: 10px;
+    height: 25%;
+    padding: 0px 10px 10px 10px;
     border-top: solid rgb(23, 22, 22) 3px;
-    /* border-bottom: 5px solid black; */
     margin: auto;
-    /* background: linear-gradient(140deg, rgb(189, 20, 20), rgb(55, 3, 3)); */
     background-image: url("../capstone-images/skullpile.jpg");
     background-size: cover;
     border-radius: 2%;
@@ -70,10 +84,11 @@
     bottom: 0px;
 }
 
-.recentScares .options {
+/* .recentScares .options {
     font-size: 8px;
     text-align: left;
-}
+    padding: 5px 2px;
+} */
 
 .options div {
     background-color: white;
@@ -82,26 +97,28 @@
     padding: 4px 6px;
     border-radius: 5%;
     box-shadow: 1px 1px 3px 1px rgb(37, 35, 35);
-    height: 20%;
+    height: 15px;
     width: 50%;
 }
+
+/* .recentScares .options div {
+    margin-top: 0px;
+    padding: 3px 2px;
+} */
 
 .options div:hover {
     background-color: rgb(177, 53, 53);
     color: white;
 }
 
-.scareContainers {
-    height: 100%;
-    width: 100%;
-
-}
-
 .recentScares {
-    height: 280px;
-    width: 160px;
+    /* height: 280px; */
+    /* width: 160px; */
     color: black;
-    font-size: 14px;
+    text-align: left;
+    /* font-size: 14px; */
+    height: 485px;
+    width: 280px;
 }
 
 .scareBackground {
@@ -112,18 +129,24 @@
     position: relative;
     z-index: 1;
     transition: 1s;
-    /* box-shadow: 2px 2px 5px 1px black; */
+    border-radius: 0 0px 10px 10px;
 }
+
+/* .recentScares .scareBackground {
+    border-radius: 0 0px 4px 4px;
+} */
 
 .scareHeader {
     background-color: rgb(23, 22, 22);
     color: white;
-    /* height: 100px; */
     height: 15%;
-    position: relative;
     z-index: 10;
-    /* box-shadow: 2px 0px 5px 1px black; */
+    border-radius: 10px 10px 0px 0px;
 }
+
+/* .recentScares .scareHeader {
+    border-radius: 5px 5px 0px 0px;
+} */
 
 .scareNameIcon {
     display: flex;
@@ -138,9 +161,9 @@
     left: 7px;
 }
 
-.recentScares .icon {
+/* .recentScares .icon {
     bottom: 8px;
-}
+} */
 
 .game {
     width: 19%;
@@ -149,9 +172,9 @@
     filter: invert(90%)
 }
 
-.recentScares .game {
+/* .recentScares .game {
     bottom: 1px;
-}
+} */
 
 .heart {
     width: 30px;
@@ -159,9 +182,9 @@
     filter: grayscale(100%) brightness(10%);
 }
 
-.recentScares .heart {
+/* .recentScares .heart {
     width: 18px;
-}
+} */
 
 .scare {
     border: 1px black solid;
@@ -173,16 +196,21 @@
     transition-delay: 2s;
     z-index: 0;
     overflow: hidden;
-    /* box-shadow: 2px 2px 5px 1px black; */
+    border-radius: 0 0px 10px 10px;
+    border-bottom: none;
+    border-top: none;
 }
+
+/* .recentScares .scare {
+    border-radius: 0 0px 5px 5px;
+} */
 
 .collections {
     display: flex;
-    /* justify-content: space-between; */
 }
 
 .collections div {
-    height: 45%;
+    height: 15px;
 }
 
 .collections .collected {
@@ -191,7 +219,6 @@
 
 .collections .remove {
     width: 25%;
-    text-align: center;
 }
 
 .description {
@@ -210,10 +237,10 @@
     margin: auto;
 }
 
-.recentScares .description div {
+/* .recentScares .description div {
     height: 60px;
     font-size: 12px;
-}
+} */
 
 
 .userRating {
@@ -221,29 +248,92 @@
     top: 170px;
 }
 
-.recentScares .userRating {
+/* .recentScares .userRating {
     top: 84px;
-}
+} */
 
 .avgRating {
     position: absolute;
     top: 225px;
 }
 
-.recentScares .avgRating {
+/* .recentScares .avgRating {
     top: 120px;
-}
-
-/* .comments {
-    position: absolute;
-    bottom: 50px;
-}
-
-.recentScares .comments {
-    top: 160px;
 } */
 
-/* .recommend {
-    position: absolute;
-    bottom: 00px;
+/* .recentScares .avgRating img {
+    position: relative;
+    right: 12px;
 } */
+
+.permanent-edits {
+    display: flex;
+}
+
+.permanent-edits div {
+    height: 15px;
+    /* background-color: rgb(177, 53, 53);
+    color: white; */
+}
+
+.permanent-edits .perm-delete:hover {
+    background-color: black;
+    color: white;
+}
+
+.permanent-edits .perm-edit {
+    width: 50%;
+}
+
+.permanent-edits .perm-delete {
+    width: 25%;
+}
+
+.blur-scares {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.blur-scares div {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(19, 19, 19);
+    opacity: .88;
+    padding-top: 100px;
+
+}
+
+.current-scare .current-header {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.current-scare {
+    padding: 30px;
+    background-color: blue;
+    height: 535px;
+    width: 295px;
+}
+
+.edit-form-container {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    /* right: 20vw; */
+    z-index: 100;
+}
+
+h1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 50px;
+    z-index: 500;
+}

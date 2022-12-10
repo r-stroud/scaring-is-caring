@@ -171,10 +171,10 @@ export const Welcome = () => {
                                         document.getElementById("createNew").style.display = "block"
                                         showHands()
                                     }
-                                }>Create New</div>
+                                }><span>+</span> CREATE NEW</div>
                                 <div onClick={
                                     () => { navigate("/scares") }
-                                }>Search For Exisiting</div>
+                                }>SEARCH EXISTING</div>
                             </section>
                         </section>
                     </section>

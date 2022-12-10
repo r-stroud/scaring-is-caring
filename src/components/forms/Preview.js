@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 export const Preview = ({ title, img, scareTypesId, details }) => {
 
     const [height, setHeight] = useState(false)
-    console.log(height)
 
     return (
         <>

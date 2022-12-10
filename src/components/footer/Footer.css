@@ -1,0 +1,46 @@
+/* footer {
+    background-color: rgb(0, 2, 4);
+    color: white;
+    height: 60px;
+
+    position: fixed;
+    bottom: -2px;
+    right: -4px;
+    width: 10%;
+    border-radius: 4%;
+    opacity: 1;
+
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+}
+
+footer img {
+    width: 120px;
+    bottom: 15px;
+}
+
+.skull1 {
+    position: relative;
+    left: 35px;
+}
+
+.skull2 {
+    position: relative;
+    right: 2px;
+}
+
+.skull3 {
+    position: relative;
+    right: 40px;
+}
+
+.github {
+    position: absolute;
+    width: 28px;
+    z-index: 5;
+    left: -4px;
+    top: -5px;
+} */

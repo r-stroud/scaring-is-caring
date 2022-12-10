@@ -29,6 +29,7 @@ export const AddNew = () => {
         }, []
     )
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -62,27 +63,21 @@ export const AddNew = () => {
                     )
                 })
                 const fetchJson2 = await fetchData2.json()
-
+                hideHands()
             }
             addScare()
-
         } else {
             form.reportValidity()
         }
     }
 
     const hideHands = () => {
-        const hands = document.querySelectorAll(".skeletonHands")
-        hands.forEach(hand => {
-            hand.style.right = "-650px"
-        })
-        const display = document.getElementById("handsScareContainer")
-        display.style.right = "-400px"
-
         const form = document.getElementById("form")
         form.style.right = "-600px"
 
     }
+
+
 
 
     return (
@@ -175,6 +170,7 @@ export const AddNew = () => {
                             document.getElementById("createNew").style.display = "none"
                             handleSubmit(click)
                             hideHands()
+
                         }}>Submit</button>
                 </form>
             </section>
