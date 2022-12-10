@@ -3,7 +3,7 @@ import { EditForm } from "../forms/EditForm"
 
 import { useState, useEffect } from "react"
 
-export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName, fetchScares }) => {
+export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName, fetchScares, callTypes }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
@@ -24,7 +24,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                 setTypes(fetchJson)
             }
             fetchTypes()
-        }, []
+        }, [, callTypes]
     )
 
     const fetchFinished = async () => {
@@ -104,6 +104,9 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
         fetchScares()
 
     }
+
+    const fetchAgain = fetchScares
+
 
 
     const rate = (num) => {
@@ -240,6 +243,9 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                             editTypeId={typeId}
                             editCreatorId={creatorId}
                             editCreatorName={creatorName}
+                            editFetchScares={fetchScares()}
+                            setShowEdit={setShowEdit}
+                            showEdit={showEdit}
                         />  </section>
                 </> : <></>}
 

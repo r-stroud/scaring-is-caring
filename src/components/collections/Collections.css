@@ -1,3 +1,18 @@
 .collectionsPage {
     padding-top: 150px;
+    height: 100%;
+    width: 100%;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-attachment: fixed;
+}
+
+
+.collectionsPage-short {
+    height: 100vh;
+}
+
+@media screen and (max-width: 1775px) {
+    .collectionsPage-short {
+        height: 100%;
+    }
 }

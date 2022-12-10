@@ -23,37 +23,38 @@ export const ScaresList = () => {
 
     return (
         <>
+            <section className={`scares-list ${scares.length < 7 ? "scares-list-short" : ""}`} >
+                {scares.length > 0 ?
 
-            {scares.length > 0 ?
+                    <div className="allScares" id="allScares">
+                        {scares.map((scare) => (
+                            <>
+                                <section>
+                                    <div className="allScaresItem-bckgrnd" id="allScaresItem-bckgrnd" >
 
-                <div className="allScares" id="allScares">
-                    {scares.map((scare) => (
-                        <>
-                            <section>
-                                <div className="allScaresItem-bckgrnd" id="allScaresItem-bckgrnd" >
+                                        <div className="allScaresItem">
 
-                                    <div className="allScaresItem">
+                                            <Scares
+                                                id={scare.id}
+                                                name={scare.name}
+                                                img={scare.img}
+                                                details={scare.details}
+                                                typeId={parseInt(scare.scareTypes.id)}
+                                                creatorId={scare.users.id}
+                                                creatorName={scare.users.fullName}
+                                                fetchScares={fetchScares}
 
-                                        <Scares
-                                            id={scare.id}
-                                            name={scare.name}
-                                            img={scare.img}
-                                            details={scare.details}
-                                            typeId={parseInt(scare.scareTypes.id)}
-                                            creatorId={scare.users.id}
-                                            creatorName={scare.users.fullName}
-                                            fetchScares={fetchScares}
+                                            />
 
-                                        />
-
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
-                        </>
+                                </section>
+                            </>
 
-                    ))}
-                </div>
+                        ))}
+                    </div>
 
-                : <></>}
+                    : <></>}
+            </section>
         </>)
 }

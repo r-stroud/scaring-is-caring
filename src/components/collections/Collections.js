@@ -35,7 +35,7 @@ export const Collections = () => {
 
     return (
         <>
-            <section className="collectionsPage">
+            <section className={`collectionsPage ${filterScares.length < 7 ? "collectionsPage-short" : ""}`}>
                 <h1>Collections</h1>
                 {filterScares.length > 0 ?
 

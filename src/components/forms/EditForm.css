@@ -2,24 +2,71 @@
     /* position: fixed; */
     flex-wrap: wrap;
     display: flex;
-    /* right: 50%;
-    width: 100%; */
-    z-index: 100;
-    /* bottom: 18.2vh; */
-    position: relative;
-    /* right: 20px; */
-    margin: auto;
+    z-index: 2000;
 }
 
 .edit-form {
-    width: 300px;
-    height: 545px;
-    margin: 5px;
-    color: white;
-    background-color: blue;
+    width: 545px;
+    height: 300px;
+    margin: 5px -120px 245px;
+    /* color: white; */
+    background-color: white;
     border: 1px black solid;
-    font-size: 26px;
+    /* font-size: 26px; */
     text-align: center;
-    padding-top: 10px;
+    padding: 10px 10px 10px 10px;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-position: center;
+    background-size: cover;
+    transform: rotate(-90deg);
 
+}
+
+.edit-form-content {
+    color: white;
+    transform: rotate(90deg);
+    position: relative;
+    top: 50px;
+
+}
+
+
+
+.edit-form-scare {
+    margin: auto;
+    width: 280px;
+    height: 485px;
+    transform: rotate(90deg);
+    position: relative;
+    bottom: 140px;
+    right: 20px;
+
+}
+
+.edit-edit .edit-form-content {
+    left: 0px;
+    top: 45px;
+    text-align: left;
+
+}
+
+#editForm label {
+    display: block;
+}
+
+#editForm fieldset {
+    padding: 8px 0;
+}
+
+#editForm textarea {
+    padding: 10px;
+    resize: none;
+    width: 250px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.edit-submit-btn {
+    margin-top: 15px;
+    width: 200px;
 }
