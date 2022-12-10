@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 
 export const EditForm = ({
     editId, editName, editImg, editDetails, editTypeId, editCreatorId, editCreatorName, editFetchScares, setShowEdit,
-    showEdit
+    showEdit, fetchTypes
 
 }) => {
 
@@ -39,7 +39,7 @@ export const EditForm = ({
         }, []
     )
 
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault()
         const form = document.getElementById("editForm")
         if (form.checkValidity()) {
@@ -53,8 +53,10 @@ export const EditForm = ({
                 const fetchJson = await fetchData.json()
             }
 
-            editScare()
-            editFetchScares()
+            await editScare()
+
+            await editFetchScares()
+            fetchTypes()
             setShowEdit(!showEdit)
 
         } else {

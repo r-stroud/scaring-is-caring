@@ -12,31 +12,34 @@ export const Welcome = () => {
 
     const navigate = useNavigate()
 
-    const [scares, setScares] = useState([])
+    const [welcomeScares, setWelcomeScares] = useState([])
     const [filterScares, setFilterScares] = useState([])
     const [filterLatestFilm, setFilterLatestFilm] = useState([])
     const [filterLatestGame, setFilterLatestGame] = useState([])
     const [filterLatestBook, setFilterLatestBook] = useState([])
 
+
+    const fetchWelcomeScares = async () => {
+        const fetchData = await fetch(`http://localhost:8088/finished?_expand=users&_expand=scares`)
+        const fetchJson = await fetchData.json()
+        setWelcomeScares(fetchJson)
+    }
+
     useEffect(
         () => {
-            const fetchScares = async () => {
-                const fetchData = await fetch(`http://localhost:8088/finished?_expand=users&_expand=scares`)
-                const fetchJson = await fetchData.json()
-                setScares(fetchJson)
-            }
-            fetchScares()
+
+            fetchWelcomeScares()
 
         }, []
     )
 
     useEffect(
         () => {
-            const copy = scares.map(x => ({ ...x }))
+            const copy = welcomeScares.map(x => ({ ...x }))
             const filteredCopy = copy.filter(x => x.users.id === projectUserObject.id)
             setFilterScares(filteredCopy)
 
-        }, [scares]
+        }, [welcomeScares]
     )
 
     useEffect(
@@ -158,6 +161,7 @@ export const Welcome = () => {
                                             typeId={filterLatestBook[0].scares.scareTypesId}
                                             creatorId={filterLatestBook[0].users.id}
                                             creatorName={filterLatestBook[0].users.fullName}
+                                            fetchScares={fetchWelcomeScares}
                                         />
                                     </>
                                 </div>

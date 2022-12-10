@@ -23,6 +23,8 @@ export const ScaresList = () => {
 
     return (
         <>
+
+
             <section className={`scares-list ${scares.length < 7 ? "scares-list-short" : ""}`} >
                 {scares.length > 0 ?
 

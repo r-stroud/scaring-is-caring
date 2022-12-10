@@ -1,11 +1,11 @@
 nav {
-    background-color: rgb(29, 22, 22);
+    background-color: rgb(3, 3, 3);
     color: white;
     position: fixed;
     width: 100%;
     top: 0;
     opacity: .95;
-    height: 140px;
+    height: 150px;
     z-index: 50;
 }
 
@@ -16,6 +16,7 @@ nav {
 }
 
 .appTitle {
+    font-family: 'Segoe UI';
     background-image: url("../capstone-images/skullpile.jpg");
     background-clip: text;
     background-size: 380px;
@@ -25,11 +26,15 @@ nav {
     animation-name: colorChange;
     animation-duration: 10s;
     animation-iteration-count: infinite;
-    font-size: 80px;
-    font-weight: 900;
+    font-size: 90px;
+    font-weight: 800;
     position: relative;
     bottom: 20px;
     border-bottom: solid white 1px;
+}
+
+.appTitle span {
+    margin-left: 15px;
 }
 
 
@@ -48,26 +53,30 @@ nav {
 .navLinks {
     display: flex;
     align-items: end;
-    flex-wrap: wrap;
     position: relative;
-    bottom: 30px;
+    bottom: 17px;
     left: 20px;
 }
 
-.navLinks div:hover {
-    color: rgb(177, 53, 53);
+.navLinks .nav-item:hover {
+    color: rgb(156, 4, 4);
+    background-color: white;
 }
 
-.navLinks div {
+.navLinks .nav-item {
     margin: 0 5vw 0 0;
+    padding: 5px 30px;
+    border-radius: 10px;
+    transition: 0.8s;
+    font-weight: bold;
 }
 
-.profileAndLogout {
+/* .profileAndLogout {
     display: flex;
     position: relative;
     bottom: 17px;
     right: 5px;
-}
+} */
 
 .profile {
     justify-self: end;
@@ -75,14 +84,52 @@ nav {
 }
 
 .logout {
-    margin: 0 1vw 0 3vw;
+    margin: 0 5vw 0 0vw;
     align-self: center;
+    padding: 5px 30px;
+    border-radius: 10px;
+    position: relative;
+    top: 3px;
+    font-weight: bold;
+    transition: 0.8s;
+    font-size: 18px;
+
+}
+
+.logout a {
+    color: rgb(204, 1, 1);
+    text-decoration: none;
+    transition: 0.8s;
+}
+
+.logout:hover {
+    background-color: rgb(204, 1, 1);
+}
+
+.logout:hover a {
+    color: white;
 }
 
 
-@media only screen and (max-width: 794px) {
+@media only screen and (max-width: 925px) {
     nav {
-        height: 255px;
+        height: 273px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    nav {
+        height: 412px;
+    }
+
+    .navLinks {
+        bottom: 15px;
+        flex-direction: column;
+    }
+
+    .navLinks div {
+        margin-top: 2px;
     }
 
 }
