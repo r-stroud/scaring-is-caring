@@ -24,13 +24,15 @@
     color: white;
     margin: 7px 0;
     box-shadow: 2px 2px 5px 2px black;
-    border: 3px rgb(79, 110, 126) solid;
+    border: 2px white solid;
+
     border-radius: 2%;
     transition: 0.3s;
 }
 
 .selection:hover {
     transform: scale(1.05);
+    border-color: rgb(189, 8, 8);
 }
 
 .welcome {
@@ -153,9 +155,9 @@
     }
 }
 
-@media only screen and (max-width: 794px) {
+@media only screen and (max-width: 925px) {
     .homePage {
-        padding-top: 250px;
+        padding-top: 375px;
     }
 
 }

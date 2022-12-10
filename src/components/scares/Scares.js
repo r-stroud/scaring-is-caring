@@ -16,13 +16,15 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
     const [finishedFilter, setFinishedFilter] = useState([])
     const [showEdit, setShowEdit] = useState(false)
 
+    const fetchTypes = async () => {
+        const fetchData = await fetch(`http://localhost:8088/scareTypes`)
+        const fetchJson = await fetchData.json()
+        setTypes(fetchJson)
+    }
+
     useEffect(
         () => {
-            const fetchTypes = async () => {
-                const fetchData = await fetch(`http://localhost:8088/scareTypes`)
-                const fetchJson = await fetchData.json()
-                setTypes(fetchJson)
-            }
+
             fetchTypes()
         }, [, callTypes]
     )
@@ -104,8 +106,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
         fetchScares()
 
     }
-
-    const fetchAgain = fetchScares
 
 
 
@@ -234,7 +234,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                     </section>
 
                     <section className="edit-form-container" id={`edit-form--${id}`}>
-
                         <EditForm
                             editId={id}
                             editName={name}
@@ -243,9 +242,10 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                             editTypeId={typeId}
                             editCreatorId={creatorId}
                             editCreatorName={creatorName}
-                            editFetchScares={fetchScares()}
+                            editFetchScares={fetchScares}
                             setShowEdit={setShowEdit}
                             showEdit={showEdit}
+                            fetchTypes={fetchTypes}
                         />  </section>
                 </> : <></>}
 
@@ -293,40 +293,44 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                     <div className="description" id={`description--${id}`}>
                         <span>SYNOPSIS:</span><div>{details}</div></div>
                     <section className="ratings">
-                        <div className="userRating">USER RATING:
-                            <div className="heartRating">
-                                <img className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
-                                    onMouseOver={document.getElementById(`heart1--${id}`) ? rateUp(1) : ""}
-                                    onMouseOut={document.getElementById(`heart1--${id}`) ? rateDown(1) : ""} />
+                        <div className="ratings-title">RATINGS:</div>
+                        <section className="ratings-container">
 
-                                <img className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
-                                    onMouseOver={document.getElementById(`heart2--${id}`) ? rateUp(2) : ""}
-                                    onMouseOut={document.getElementById(`heart2--${id}`) ? rateDown(2) : ""} />
+                            <div className="userRating">USER:
+                                <div className="heartRating">
+                                    <img className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={document.getElementById(`heart1--${id}`) ? rateUp(1) : ""}
+                                        onMouseOut={document.getElementById(`heart1--${id}`) ? rateDown(1) : ""} />
 
-                                <img className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
-                                    onMouseOver={document.getElementById(`heart3--${id}`) ? rateUp(3) : ""}
-                                    onMouseOut={document.getElementById(`heart3--${id}`) ? rateDown(3) : ""} />
+                                    <img className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={document.getElementById(`heart2--${id}`) ? rateUp(2) : ""}
+                                        onMouseOut={document.getElementById(`heart2--${id}`) ? rateDown(2) : ""} />
 
-                                <img className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
-                                    onMouseOver={document.getElementById(`heart4--${id}`) ? rateUp(4) : ""}
-                                    onMouseOut={document.getElementById(`heart4--${id}`) ? rateDown(4) : ""} />
-                                <img
-                                    className="heart heart5"
-                                    id={`heart5--${id}`}
-                                    src={require("../capstone-images/heart.png")}
-                                    onMouseOver={document.getElementById(`heart5--${id}`) ? rateUp(5) : ""}
-                                    onMouseOut={document.getElementById(`heart5--${id}`) ? rateDown(5) : ""} />
+                                    <img className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={document.getElementById(`heart3--${id}`) ? rateUp(3) : ""}
+                                        onMouseOut={document.getElementById(`heart3--${id}`) ? rateDown(3) : ""} />
+
+                                    <img className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={document.getElementById(`heart4--${id}`) ? rateUp(4) : ""}
+                                        onMouseOut={document.getElementById(`heart4--${id}`) ? rateDown(4) : ""} />
+                                    <img
+                                        className="heart heart5"
+                                        id={`heart5--${id}`}
+                                        src={require("../capstone-images/heart.png")}
+                                        onMouseOver={document.getElementById(`heart5--${id}`) ? rateUp(5) : ""}
+                                        onMouseOut={document.getElementById(`heart5--${id}`) ? rateDown(5) : ""} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="avgRating">AVERAGE RATING:
-                            <div>
-                                <img className="heart" src={require("../capstone-images/heart.png")} />
-                                <img className="heart" src={require("../capstone-images/heart.png")} />
-                                <img className="heart" src={require("../capstone-images/heart.png")} />
-                                <img className="heart" src={require("../capstone-images/heart.png")} />
-                                <img className="heart" src={require("../capstone-images/heart.png")} />
+                            <div className="avgRating">AVERAGE:
+                                <div>
+                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                </div>
                             </div>
-                        </div>
+                        </section>
                     </section>
                     {/* <div className="comments">COMMENTS</div>
                     <div className="recommend">RECOMMEND</div> */}
