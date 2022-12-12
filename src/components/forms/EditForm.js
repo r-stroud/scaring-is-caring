@@ -21,7 +21,6 @@ export const EditForm = ({
         details: editDetails,
         scareTypesId: editTypeId,
         usersId: projectUserObject.id,
-        userName: projectUserObject.fullName
     })
 
     const [scareType, setScareType] = useState([])
@@ -76,6 +75,7 @@ export const EditForm = ({
                     </div>
                     <div className="edit-form-scare">
                         <Scares
+                            key={`edit-scare--${editId}`}
                             id={editId}
                             name={editName}
                             img={editImg}

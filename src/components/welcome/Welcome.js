@@ -77,19 +77,21 @@ export const Welcome = () => {
 
     const hideHands = () => {
         const form = document.getElementById("form")
-        form.style.right = "-600px"
+        form.style.bottom = "-1000px"
 
     }
 
     const showHands = () => {
         const form = document.getElementById("form")
-        form.style.right = "540px"
+        form.style.bottom = "8px"
 
     }
 
     return (
         <>
-            <section className="skeletonHands" id="skeletonHands">
+            <section className="form-container"
+            // className="skeletonHands" id="skeletonHands"
+            >
                 <div className="form" id="form">
                     <AddNew />
                 </div>
