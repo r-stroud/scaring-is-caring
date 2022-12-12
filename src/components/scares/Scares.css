@@ -1,18 +1,53 @@
 .scares-list {
+    min-height: 100vh;
     height: 100%;
     width: 100%;
     background-image: url("../capstone-images/skull-background.jpg");
     background-attachment: fixed;
+    padding: 150px 0 100px;
 }
 
-.scares-list-short {
-    height: 100vh;
+.scares-list-title {
+    /* margin-top: 50px; */
+    /* padding-left: 20px; */
+    color: white;
+    font-size: 60px;
+    font-weight: 500;
 }
 
-@media screen and (max-width: 1775px) {
-    .scares-list-short {
-        height: 100%;
-    }
+.scares-list-title span {
+    /* margin-top: 50px; */
+    color: rgb(189, 8, 8);
+}
+
+.filter-my-scares {
+    display: block;
+    margin: 0px 0 10px;
+    padding: 5px 15px;
+    font-size: 24px;
+    color: white;
+}
+
+.filter-my-scares input {
+    margin: 0 15px;
+}
+
+.filter-scares {
+    padding: 150px 28px 15px;
+    width: 100%;
+    top: 0px;
+    position: fixed;
+    z-index: 40;
+    background-image: url("../capstone-images/skull-background.jpg");
+    border-bottom: 1px solid white;
+
+}
+
+.filter-scares input {
+    padding: 5px 10px;
+    font-family: "Spectral SC";
+    margin: 0 15px;
+
 }
 
 .scareContainers {
@@ -33,11 +68,13 @@
     width: 100%;
 }
 
+
+
 .allScares {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-top: 170px;
+    padding-top: 195px;
 }
 
 .allScaresItem {
@@ -45,28 +82,6 @@
     width: 280px;
 }
 
-/* .allScaresItem-bckgrnd {
-    height: 445px;
-    width: 250px;
-    background-size: cover;
-    background-position: center;
-    background-image: url("../capstone-images/skullpile.jpg");
-    background-size: cover;
-    margin: 0 10px 10px;
-} */
-
-.collectionsList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.collectionItem {
-    height: 485px;
-    width: 280px;
-    margin: 0 5px 30px 5px;
-    padding: 55px 30px 30px;
-}
 
 .options {
     display: flex;
@@ -82,12 +97,6 @@
     position: absolute;
     bottom: 0px;
 }
-
-/* .recentScares .options {
-    font-size: 8px;
-    text-align: left;
-    padding: 5px 2px;
-} */
 
 .options div {
     background-color: white;
@@ -131,10 +140,6 @@
     border-radius: 0 0px 10px 10px;
 }
 
-/* .recentScares .scareBackground {
-    border-radius: 0 0px 4px 4px;
-} */
-
 .scareHeader {
     background-color: rgb(23, 22, 22);
     color: white;
@@ -146,10 +151,6 @@
     font-weight: bold;
     font-size: 18px;
 }
-
-/* .recentScares .scareHeader {
-    border-radius: 5px 5px 0px 0px;
-} */
 
 .scareNameIcon {
     display: flex;
@@ -163,10 +164,6 @@
     bottom: 14px;
     left: 6px;
 }
-
-/* .recentScares .icon {
-    bottom: 8px;
-} */
 
 .game {
     width: 19%;
@@ -340,4 +337,26 @@ h1 {
     width: 100%;
     font-size: 50px;
     z-index: 500;
+}
+
+@media only screen and (max-width: 925px) {
+    .filter-scares {
+        padding-top: 273px;
+    }
+
+    .allScares {
+        padding-top: 318px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    .filter-scares {
+        padding-top: 412px;
+    }
+
+    .allScares {
+        padding-top: 457px;
+    }
+
 }

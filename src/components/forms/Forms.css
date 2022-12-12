@@ -1,26 +1,69 @@
 form {
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .formTitle {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 650;
-    text-align: center;
-    width: 70%;
-    margin: auto;
+    text-align: right;
+    width: 100%;
+    color: rgb(189, 8, 8);
+    border-bottom: 1px solid white;
+    padding: 5px 0 5px;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.formTitle span {
+    margin-right: 15px;
+    display: inline-block;
+
+}
+
+.formSubTitles {
+    text-align: right;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-position: center;
+    background-size: cover;
+    padding: 5px 0;
+    margin: 0;
+    /* height: 10px; */
+    border-bottom: 2px solid white;
+}
+
+.formSubTitle {
+    font-size: 14px;
+    color: white;
+    margin-right: 15px;
+}
+
+.subTitle-details {
+    display: flex;
+    justify-content: right;
+}
+
+.subTitle-details div {
+    margin: 0 15px;
+    font-size: 13px;
 }
 
 .formTitles {
-    margin-top: 20px;
+    width: 100%;
+    margin-bottom: -30px;
 }
 
 #scareForm {
-    border: 1px solid black;
-    width: 60%;
-    margin: 20px auto;
-    padding: 10px 50px;
+    width: 90%;
+    margin: 0px auto 5px;
+}
 
+#scareForm fieldset {
+    padding: 2px;
+    margin: 0;
 }
 
 #scareForm label {
@@ -28,36 +71,70 @@ form {
     display: block;
 }
 
+#scareForm input,
+option,
+select {
+    padding: 5px 10px;
+    font-family: "Specter SC";
+}
+
 #scareForm textarea {
     padding: 10px;
     resize: none;
-    width: 300px;
-    height: 300px;
+    width: 95%;
+    margin: auto;
+    height: 55px;
     overflow-y: scroll;
     position: relative;
-
 }
 
-.preview {
+/* .preview {
     position: relative;
     height: 770px;
     width: 400px;
     background-color: rgb(219, 70, 70);
-    bottom: 1146px;
+    bottom: 146px;
     right: -610px;
     z-index: 199;
     transition: 1s;
     border-radius: 1%;
     box-shadow: 2px 2px 5px 2px black;
     ;
+} */
+
+.preview {
+    padding-top: 0px;
+    background-image: url("../capstone-images/skull-background.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    border-radius: 20px;
+    /* display: block; */
 }
 
+
+.preview-item {
+    margin-top: -50px;
+}
+
+/* .title-and-image {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.type-and-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .skeletonHands {
-    position: relative;
-    top: -799px;
-    left: 550px;
+    position: absolute;
+    bottom: -0px;
+    left: -21px;
     z-index: 200;
     transition: 1s;
+    transform: rotate(90deg)
 }
 
 .submit-btn {
