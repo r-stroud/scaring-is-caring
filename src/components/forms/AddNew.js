@@ -4,12 +4,13 @@ import { Preview } from "./Preview"
 import { useState, useEffect } from "react"
 import { Scares } from "../scares/Scares"
 
-export const AddNew = () => {
+export const AddNew = ({ fetchWelcome }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
 
     const [scaresLength, setScaresLength] = useState([])
+    const [callTypes, setCallTypes] = useState(false)
 
     useEffect(
         () => {
@@ -80,6 +81,7 @@ export const AddNew = () => {
                 })
                 const fetchJson2 = await fetchData2.json()
                 hideHands()
+                fetchWelcome()
             }
             addScare()
         } else {
@@ -98,98 +100,6 @@ export const AddNew = () => {
 
     return (
         <>
-            {/* <section className="addForm">
-                <section className="formTitles">
-                    <div className="formTitle">ADD AN ITEM TO YOUR COLLECTION</div>
-                    <div className="formTitle">&</div>
-                    <div className="formTitle">TO THE SCARES PAGE</div>
-                </section>
-                <form id="scareForm">
-                    <fieldset>
-                        <label htmlFor="name">Title:</label>
-                        <input
-                            required
-                            autoFocus
-                            type="text"
-                            className="form-field"
-                            placeholder="Please enter a title"
-                            value={scareDetails.name}
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...scareDetails }
-                                    copy.name = evt.target.value
-                                    setScareDetails(copy)
-                                }
-                            }
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="img">Image:</label>
-                        <input
-                            required
-                            autoFocus
-                            type="text"
-                            className="form-field"
-                            placeholder="Please enter an image URL"
-                            value={scareDetails.img}
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...scareDetails }
-                                    copy.img = evt.target.value
-                                    setScareDetails(copy)
-                                }
-                            }
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="synopsis">Synopsis:</label>
-                        <textarea
-                            required
-                            autoFocus
-                            className="form-field"
-                            placeholder="Please enter a breif description"
-                            value={scareDetails.details}
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...scareDetails }
-                                    copy.details = evt.target.value
-                                    setScareDetails(copy)
-                                }
-                            }
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="type">Type:</label>
-                        <select
-                            required
-                            autoFocus
-                            className="form-field"
-                            value={scareDetails.scareTypesId}
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...scareDetails }
-                                    copy.scareTypesId = evt.target.value
-                                    setScareDetails(copy)
-                                }
-                            }
-                        >
-                            <option value="">Please select a type</option>
-                            {scareType.map(x => <>
-                                <option value={x.id}>{x.type}</option>
-                            </>)}
-                        </select>
-                    </fieldset>
-                    <button
-                        type="submit"
-                        className="submit-btn"
-                        onClick={(click) => {
-                            document.getElementById("createNew").style.display = "none"
-                            handleSubmit(click)
-                            hideHands()
-
-                        }}>Submit</button>
-                </form>
-            </section> */}
 
             <img className="skeletonHands" src={require("../capstone-images/skeleton-hands-2.png")} />
             <section className="preview allScares">
@@ -198,8 +108,8 @@ export const AddNew = () => {
                     <section className="formSubTitles">
                         <div className="formSubTitle">ITEM WILL BE ADDED TO:</div>
                         <section className="subTitle-details">
-                            <div className="formSubTitle"> <span>+</span> ALL SCARES</div>
-                            <div className="formSubTitle"> <span>+</span> MY SCARES</div>
+                            <div className="formSubTitle"> + ALL <span>SCARES</span></div>
+                            <div className="formSubTitle"> + MY <span>SCARES</span></div>
                         </section>
                     </section>
                 </section>
@@ -272,6 +182,7 @@ export const AddNew = () => {
                                         const copy = { ...scareDetails }
                                         copy.scareTypesId = evt.target.value
                                         setScareDetails(copy)
+                                        setCallTypes(!callTypes)
                                     }
                                 }
                             >
@@ -293,14 +204,6 @@ export const AddNew = () => {
                     </section>
                 </form>
 
-
-
-
-                {/* {<Preview
-                    title={scareDetails.name}
-                    img={scareDetails.img}
-                    scareTypesId={scareDetails.scareTypesId}
-                    details={scareDetails.details} />} */}
                 <section className="allScaresItem preview-item">
                     <Scares
                         id={scaresLength.length > 0 ? scaresLength.length + 1 : 1}
@@ -311,7 +214,7 @@ export const AddNew = () => {
                         typeId={scareDetails.scareTypesId === "" ? 1 : scareDetails.scareTypesId}
                         creatorId={scareDetails.usersId}
                         creatorName={scareDetails.userName}
-                    // callTypes={callTypes}
+                        callTypes={callTypes}
                     />
                 </section>
             </section>

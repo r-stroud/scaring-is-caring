@@ -71,7 +71,7 @@ export const EditForm = ({
 
                 <div className="edit-form edit-current">
                     <div className="edit-form-content">
-                        <span>CURRENT SCARE</span>
+                        <span>CURRENT <span>SCARE</span></span>
                     </div>
                     <div className="edit-form-scare">
                         <Scares
@@ -88,7 +88,7 @@ export const EditForm = ({
                 </div>
                 <div className="edit-form edit-edit">
                     <div className="edit-form-content">
-                        <span>EDIT SCARE</span>
+                        <span>EDIT <span>SCARE</span></span>
 
 
 
@@ -182,16 +182,17 @@ export const EditForm = ({
                 </div>
                 <div className="edit-form edit-preview">
                     <div className="edit-form-content">
-                        <span>SCARE PREVIEW</span>
+                        <span><span>SCARE</span> PREVIEW</span>
                     </div>
                     <div className="edit-scare-preview edit-form-scare">
                         {scareDetails ?
                             <Scares
                                 id={`${editId}--preview`}
-                                name={scareDetails.name}
-                                img={scareDetails.img}
-                                details={scareDetails.details}
-                                typeId={scareDetails.scareTypesId}
+                                name={scareDetails.name === "" ? "TITLE" : scareDetails.name}
+                                img={scareDetails.img === "" ?
+                                    "https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg" : scareDetails.img}
+                                details={scareDetails.details === "" ? "SYNOPSIS DETAILS" : scareDetails.details}
+                                typeId={scareDetails.scareTypesId === "" ? 1 : scareDetails.scareTypesId}
                                 creatorId={scareDetails.usersId}
                                 creatorName={scareDetails.userName}
                                 callTypes={callTypes}

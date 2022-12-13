@@ -71,7 +71,7 @@ export const Collections = () => {
         <>
             <section className="collections-list scares-list">
                 <section className="filter-scares">
-                    <div className="scares-list-title">ALL <span>SCARES</span></div>
+                    <div className="scares-list-title">MY <span>SCARES</span></div>
                     <section className="filter-my-scares">
                         <label htmlFor="myScare">MY CREATIONS</label>
                         <input

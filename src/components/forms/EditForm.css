@@ -1,52 +1,54 @@
 .edit-container {
-    /* position: fixed; */
     flex-wrap: wrap;
     display: flex;
     z-index: 2000;
 }
 
 .edit-form {
-    width: 545px;
-    height: 300px;
-    margin: 5px -120px 245px;
-    /* color: white; */
+    width: 300px;
+    height: 545px;
+    margin: 10px;
     background-color: white;
     border: 1px black solid;
-    /* font-size: 26px; */
-    text-align: center;
     padding: 10px 10px 10px 10px;
     background-image: url("../capstone-images/skull-background.jpg");
     background-position: center;
     background-size: cover;
-    transform: rotate(-90deg);
+    border-radius: 10px;
+}
 
+.edit-form-content form {
+    width: 70%;
+    margin: auto;
 }
 
 .edit-form-content {
     color: white;
-    transform: rotate(90deg);
-    position: relative;
-    top: 50px;
-
+    top: 10px;
 }
 
+.edit-form-content span {
+    display: inline-block;
+    width: 100%;
+    border-bottom: solid 1px white;
+    padding: 2px 0;
+}
 
+.edit-form-content span span {
+    display: inline;
+    border-bottom: none;
+    color: rgb(189, 8, 8);
+    font-weight: bold;
+
+}
 
 .edit-form-scare {
     margin: auto;
     width: 280px;
     height: 485px;
-    transform: rotate(90deg);
     position: relative;
-    bottom: 140px;
-    right: 20px;
-
-}
-
-.edit-edit .edit-form-content {
-    left: 0px;
-    top: 45px;
-    text-align: left;
+    bottom: -5px;
+    right: 10px;
 
 }
 
@@ -58,15 +60,41 @@
     padding: 8px 0;
 }
 
+#editForm input {
+    font-family: "Spectral SC";
+    padding: 2px 10px;
+}
+
+#editForm select {
+    font-family: "Spectral SC";
+    width: 105%;
+}
+
+#editForm option {
+    font-family: "Spectral SC";
+    padding: 2px;
+}
+
 #editForm textarea {
-    padding: 10px;
+    padding: 5px 10px;
     resize: none;
-    width: 250px;
     height: 200px;
     overflow-y: scroll;
+    font-family: "Spectral SC";
 }
 
 .edit-submit-btn {
-    margin-top: 15px;
-    width: 200px;
+    margin: 9px auto;
+    padding: 5px 15px;
+    font-family: "Spectral SC";
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    ;
+}
+
+.edit-submit-btn:hover {
+    transform: scale(1.05);
+    background-color: rgb(189, 8, 8);
+
 }

@@ -93,7 +93,8 @@ export const Welcome = () => {
             // className="skeletonHands" id="skeletonHands"
             >
                 <div className="form" id="form">
-                    <AddNew />
+                    <AddNew
+                        fetchWelcome={fetchWelcomeScares} />
                 </div>
             </section>
             <section className="createNew" id="createNew" onClick={
@@ -133,6 +134,7 @@ export const Welcome = () => {
                                             typeId={filterLatestFilm[0].scares.scareTypesId}
                                             creatorId={filterLatestFilm[0].users.id}
                                             creatorName={filterLatestFilm[0].users.fullName}
+                                            fetchScares={fetchWelcomeScares}
                                         />
                                     </>
                                 </div>
@@ -148,6 +150,7 @@ export const Welcome = () => {
                                             typeId={filterLatestGame[0].scares.scareTypesId}
                                             creatorId={filterLatestGame[0].users.id}
                                             creatorName={filterLatestGame[0].users.fullName}
+                                            fetchScares={fetchWelcomeScares}
                                         />
                                     </>
                                 </div>
