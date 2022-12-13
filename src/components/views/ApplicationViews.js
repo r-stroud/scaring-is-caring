@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { Collections } from "../collections/Collections"
 import { Welcome } from "../welcome/Welcome"
 import { ScaresList } from "../scares/ScaresList"
+import { Fiends } from "../fiends/Fiends"
 
 export const ApplicationViews = () => {
 
@@ -17,6 +18,7 @@ export const ApplicationViews = () => {
                 <Route path="/" element={<Welcome />} />
                 <Route path="/collections" element={<Collections />} />
                 <Route path="/scares" element={<ScaresList />} />
+                <Route path="/fiends" element={<Fiends />} />
             </Routes>
         </>
     )

@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     background-image: url("../capstone-images/skull-background.jpg");
-    background-position: center;
+    background-position: cover;
     background-attachment: fixed;
 }
 

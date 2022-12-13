@@ -16,7 +16,10 @@ export const Navbar = () => {
                     <div className="nav-item" onClick={
                         () => { navigate("/scares") }
                     }>SCARES</div>
-                    <div className="nav-item" >TBD3</div>
+                    <div className="nav-item"
+                        onClick={
+                            () => { navigate("/fiends") }
+                        }>FIENDS</div>
                     <div className="nav-item" >TBD4</div>
 
                     <section className="profileAndLogout">
