@@ -13,10 +13,12 @@ export const Fiends = () => {
     const [usersList, setUsersList] = useState([])
     const [filteredFiendsList, setFilteredFiendsList] = useState([])
     const [search, setSearch] = useState("")
+    const [userSearch, setUserSearch] = useState("")
     const [searchedFiends, setSearchedFiends] = useState([])
     const [switchFilter, setSwitchFilter] = useState(false)
     const [filteredUsers, setFilteredUsers] = useState([])
     const [searchedUsers, setSearchedUsers] = useState([])
+    const [test, setTest] = useState(false)
 
 
     const fetchMyFiends = async () => {
@@ -40,7 +42,7 @@ export const Fiends = () => {
     useEffect(
         () => {
             fetchAll()
-        }, []
+        }, [, test]
     )
 
     useEffect(
@@ -71,12 +73,23 @@ export const Fiends = () => {
 
     useEffect(
         () => {
+            const copy = filteredUsers.map(x => ({ ...x }))
+            const filterCopy = copy.filter(x => {
+                return x.fullName.toLowerCase().includes(userSearch.toLowerCase()) || x.email.toLowerCase().includes(userSearch.toLowerCase())
+            })
+            setSearchedUsers(filterCopy)
+        }, [userSearch]
+    )
+
+
+    useEffect(
+        () => {
 
             const copy = usersList.length > 0 ? usersList.map(x => ({ ...x })) : <></>
             const fiendCopy = fiendsList.length > 0 ? fiendsList.map(x => x.fiendsId) : <></>
-            const filterCopy = copy.length > 0 ? copy.filter(x =>
+            const filterCopy = copy.length > 0 && fiendCopy.length > 0 ? copy.filter(x =>
                 x.id !== projectUserObject.id && !fiendCopy.includes(x.id)
-            ) : <></>
+            ) : copy.length > 0 ? copy.filter(x => x.id != projectUserObject.id) : <></>
             setFilteredUsers(filterCopy)
         }, [fiendsList]
     )
@@ -100,7 +113,9 @@ export const Fiends = () => {
                             <input
                                 id="addFiendsSearch"
                                 onChange={(changeEvent) => (
-                                    setSearch(changeEvent.target.value))
+                                    switchFilter ?
+                                        setUserSearch(changeEvent.target.value) :
+                                        setSearch(changeEvent.target.value))
                                 }
                                 type="text"
                                 placeholder="SEARCH FOR A FIEND"
@@ -109,7 +124,6 @@ export const Fiends = () => {
                     </section>
 
                 </section>
-
                 <div className="my-fiends">
                     <div className="switch-filter" onClick={
                         () => {
@@ -119,30 +133,46 @@ export const Fiends = () => {
                     <div className="my-fiends-scroll">
                         <div className="fiends">{switchFilter ? "USERS" : "FIENDS"}
                             <section className="fiends-headers">
-                                <div>NAME</div><div>EMAIL</div><div>ADD</div>
+                                <div>NAME</div><div>EMAIL</div><div>{switchFilter ? "ADD FIEND" : "REMOVE FIEND"}</div>
                             </section>
                         </div>
                         {!switchFilter ?
                             <div className="my-fiends-container">
                                 {searchedFiends.length > 0 ? searchedFiends.map(
+
                                     (fiend) => (
-                                        <>
+                                        <> {console.log(filteredFiendsList)}
                                             <FiendsProfile
+                                                key={`fiend--${fiend.id}`}
+                                                fiendId={fiend.id}
                                                 name={fiend.fullName}
                                                 email={fiend.email}
+                                                fetchAll={fetchAll}
+                                                setTest={setTest}
+                                                test={test}
+                                                fiendsList={fiendsList}
                                             />
                                         </>
                                     ))
-                                    : <></>}
-                            </div> :
+                                    : <>
+                                        {/* <FiendsProfile
+                                        noEntry={true}
+                                    /> */}
+                                    </>}
+                            </div>
+                            :
 
                             <div className="my-fiends-container">
                                 {searchedUsers.length > 0 ? searchedUsers.map(
                                     (fiend) => (
                                         <>
-                                            <FiendsProfile
+                                            <Users
+                                                key={`user--${fiend.id}`}
+                                                fiendId={fiend.id}
                                                 name={fiend.fullName}
                                                 email={fiend.email}
+                                                fetchAll={fetchAll}
+                                                setTest={setTest}
                                                 add={true} />
                                         </>
                                     ))

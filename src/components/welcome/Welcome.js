@@ -46,34 +46,48 @@ export const Welcome = () => {
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
+                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 1)
-                const lastElement = filteredCopy[filteredCopy.length - 1]
-                setFilterLatestFilm([lastElement])
+                console.log(filteredCopy)
+                const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
+                console.log(lastElement)
+                setFilterLatestFilm(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
+    console.log(filterLatestFilm)
 
     useEffect(
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
+                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 2)
-                const lastElement = filteredCopy[filteredCopy.length - 1]
-                setFilterLatestGame([lastElement])
+                console.log(filteredCopy)
+                const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
+                console.log(lastElement)
+                setFilterLatestGame(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
+    console.log(filterLatestGame.length)
+    console.log(filterLatestGame)
 
     useEffect(
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
+                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 3)
-                const lastElement = filteredCopy[filteredCopy.length - 1]
-                setFilterLatestBook([lastElement])
+                console.log(filteredCopy)
+                const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
+                console.log(lastElement)
+                setFilterLatestBook(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
+    console.log(filterLatestBook.length)
+    console.log(filterLatestBook)
 
     const hideHands = () => {
         const form = document.getElementById("form")
@@ -126,6 +140,7 @@ export const Welcome = () => {
                             <div className="scareContainer">{filterLatestFilm !== undefined && filterLatestFilm.length > 0 ?
                                 <div className="recentScares">
                                     <>
+                                        {console.log(filterLatestFilm)}
                                         <Scares
                                             id={filterLatestFilm[0].scaresId}
                                             name={filterLatestFilm[0].scares.name}
@@ -138,8 +153,9 @@ export const Welcome = () => {
                                         />
                                     </>
                                 </div>
-                                : <></>} </div>
-                            <div className="scareContainer">{filterLatestFilm !== undefined && filterLatestFilm.length > 0 ?
+                                : <><img className="latest-film-img"
+                                    src={require("../capstone-images/film-removebg-preview.png")} /></>} </div>
+                            <div className="scareContainer">{filterLatestGame !== undefined && filterLatestGame.length > 0 ?
                                 <div className="recentScares">
                                     <>
                                         <Scares
@@ -154,8 +170,9 @@ export const Welcome = () => {
                                         />
                                     </>
                                 </div>
-                                : <></>}</div>
-                            <div className="scareContainer">{filterLatestFilm !== undefined && filterLatestFilm.length > 0 ?
+                                : <><img className="latest-game-img"
+                                    src={require("../capstone-images/game-removebg-preview.png")} /></>}</div>
+                            <div className="scareContainer">{filterLatestBook !== undefined && filterLatestBook.length > 0 ?
                                 <div className="recentScares">
                                     <>
                                         <Scares
@@ -170,7 +187,8 @@ export const Welcome = () => {
                                         />
                                     </>
                                 </div>
-                                : <></>} </div>
+                                : <><img className="latest-book-img"
+                                    src={require("../capstone-images/book-removebg-preview.png")} /></>} </div>
                         </section>
                         <section>
                             <div className="ready">READY TO ADD MORE?</div>
