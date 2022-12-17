@@ -110,7 +110,7 @@ export const ScaresList = () => {
                                                 details={scare.details}
                                                 typeId={parseInt(scare.scareTypes.id)}
                                                 creatorId={scare.users.id}
-                                                creatorName={scare.users.fullName}
+                                                // creatorName={scare.users.fullName}
                                                 fetchScares={fetchScares}
 
                                             />

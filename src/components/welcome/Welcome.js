@@ -129,7 +129,11 @@ export const Welcome = () => {
                         }
                     }>COLLECTIONS</div>
 
-                    <div className="selection">RECOMMENDATIONS</div>
+                    <div className="selection"
+                        onClick={() => {
+                            navigate("/Recommendations")
+                        }
+                        }>RECOMMENDATIONS</div>
                     <div className="selection">QUEUE</div>
                 </section>
                 <section className="welcome">
@@ -142,13 +146,14 @@ export const Welcome = () => {
                                     <>
                                         {console.log(filterLatestFilm)}
                                         <Scares
+                                            key={filterLatestFilm[0].scaresId}
                                             id={filterLatestFilm[0].scaresId}
                                             name={filterLatestFilm[0].scares.name}
                                             img={filterLatestFilm[0].scares.img}
                                             details={filterLatestFilm[0].scares.details}
                                             typeId={filterLatestFilm[0].scares.scareTypesId}
                                             creatorId={filterLatestFilm[0].users.id}
-                                            creatorName={filterLatestFilm[0].users.fullName}
+                                            // creatorName={filterLatestFilm[0].users.fullName}
                                             fetchScares={fetchWelcomeScares}
                                         />
                                     </>
@@ -159,13 +164,14 @@ export const Welcome = () => {
                                 <div className="recentScares">
                                     <>
                                         <Scares
+                                            key={`welcome--${filterLatestGame[0].scaresId}`}
                                             id={filterLatestGame[0].scaresId}
                                             name={filterLatestGame[0].scares.name}
                                             img={filterLatestGame[0].scares.img}
                                             details={filterLatestGame[0].scares.details}
                                             typeId={filterLatestGame[0].scares.scareTypesId}
                                             creatorId={filterLatestGame[0].users.id}
-                                            creatorName={filterLatestGame[0].users.fullName}
+                                            // creatorName={filterLatestGame[0].users.fullName}
                                             fetchScares={fetchWelcomeScares}
                                         />
                                     </>
@@ -176,13 +182,14 @@ export const Welcome = () => {
                                 <div className="recentScares">
                                     <>
                                         <Scares
+                                            key={filterLatestBook[0].scaresId}
                                             id={filterLatestBook[0].scaresId}
                                             name={filterLatestBook[0].scares.name}
                                             img={filterLatestBook[0].scares.img}
                                             details={filterLatestBook[0].scares.details}
                                             typeId={filterLatestBook[0].scares.scareTypesId}
                                             creatorId={filterLatestBook[0].users.id}
-                                            creatorName={filterLatestBook[0].users.fullName}
+                                            // creatorName={filterLatestBook[0].users.fullName}
                                             fetchScares={fetchWelcomeScares}
                                         />
                                     </>
