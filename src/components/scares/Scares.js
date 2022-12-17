@@ -3,7 +3,7 @@ import { EditForm } from "../forms/EditForm"
 
 import { useState, useEffect } from "react"
 
-export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName, fetchScares, callTypes }) => {
+export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares, callTypes, recommendation, recommendationId }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
@@ -68,6 +68,35 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
         }, [types]
     )
 
+    const recommend = async () => {
+        const recommnededObj = {
+            usersId: projectUserObject.id,
+            fiends: 2,
+            scaresId: id,
+            comment: "test",
+        }
+
+        const fetchData = await fetch(`http://localhost:8088/recommended`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(recommnededObj)
+        })
+
+    }
+
+    const addAndRemove = async () => {
+        await addToCollection()
+        await removeRecommendation()
+        fetchScares()
+    }
+
+    const removeRecommendation = async () => {
+        const fetchData = await fetch(`http://localhost:8088/recommended/${recommendationId}`, {
+            method: "DELETE"
+        })
+        fetchScares()
+    }
+
     const addToCollection = async () => {
 
         const collectionObj = {
@@ -102,6 +131,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
         const fetchData = await fetch(`http://localhost:8088/scares/${id}`, {
             method: "DELETE"
         })
+
         fetchFinished()
         fetchScares()
 
@@ -235,13 +265,14 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
 
                     <section className="edit-form-container" id={`edit-form--${id}`}>
                         <EditForm
+                            key={`edit--${id}`}
                             editId={id}
                             editName={name}
                             editImg={img}
                             editDetails={details}
                             editTypeId={typeId}
                             editCreatorId={creatorId}
-                            editCreatorName={creatorName}
+                            // editCreatorName={creatorName}
                             editFetchScares={fetchScares}
                             setShowEdit={setShowEdit}
                             showEdit={showEdit}
@@ -335,40 +366,58 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, creatorName,
                     {/* <div className="comments">COMMENTS</div>
                     <div className="recommend">RECOMMEND</div> */}
                     <section className="options">
-                        <div>RECOMMEND</div>
-                        {finishedFilter.length > 0 ?
-                            <section className="collections">
-                                <div className="collected">COLLECTED</div>
-                                <div className="remove"
+                        {recommendation ?
+                            <>
+                                <div onClick={
+                                    () => {
+                                        addAndRemove()
+
+                                    }
+                                }>ADD TO COLLECTION</div>
+                                <div
                                     onClick={
                                         () => {
-                                            deleteFromCollection()
+                                            removeRecommendation()
                                         }
-                                    }
-                                >REMOVE</div>
-                            </section> :
+                                    }>REMOVE </div>
+                            </> :
+                            <>
+                                <div onClick={
+                                    () => { recommend() }}>
+                                    RECOMMEND</div>
+                                {finishedFilter.length > 0 ?
+                                    <section className="collections">
+                                        <div className="collected">COLLECTED</div>
+                                        <div className="remove"
+                                            onClick={
+                                                () => {
+                                                    deleteFromCollection()
+                                                }
+                                            }
+                                        >REMOVE</div>
+                                    </section> :
 
-                            <div onClick={
-                                () => {
-                                    addToCollection()
+                                    <div onClick={
+                                        () => {
+                                            addToCollection()
 
-                                }
-                            }>ADD TO COLLECTION</div>}
-                        <section className="permanent-edits">
-                            {creatorId === projectUserObject.id ? <>
-                                <div className="perm-edit" onClick={
-                                    () => {
-                                        setShowEdit(!showEdit)
+                                        }
+                                    }>ADD TO COLLECTION</div>}
+                                <section className="permanent-edits">
+                                    {creatorId === projectUserObject.id ? <>
+                                        <div className="perm-edit" onClick={
+                                            () => {
+                                                setShowEdit(!showEdit)
 
-                                    }
-                                }>EDIT SCARE</div>
+                                            }
+                                        }>EDIT SCARE</div>
 
-                                <div className="perm-delete" onClick={
-                                    () => { permanentDelete() }
-                                }>DELETE</div>
-                            </> : <></>}
+                                        <div className="perm-delete" onClick={
+                                            () => { permanentDelete() }
+                                        }>DELETE</div>
+                                    </> : <></>}
 
-                        </section>
+                                </section> </>}
 
                     </section>
 

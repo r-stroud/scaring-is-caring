@@ -35,25 +35,13 @@ export const Users = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, t
         }, [fiends]
     )
 
-    // const deleteFiend = async () => {
-    //     if (filterFiends.length > 0) {
-    //         const fetchFiends = await fetch(`http://localhost:8088/fiends/${filterFiends[0].id}`, { method: "DELETE" })
-    //         fetchAll()
-
-    //         await setTest(!test)
-    //         // await fetchFiends()
-
-    //     }
-
-    // }
-
     const addFiend = async () => {
         console.log(fiendId)
         if (fiendId !== undefined) {
 
             const obj = {
                 usersId: projectUserObject.id,
-                fiendsId: fiendId
+                fiends: fiendId
             }
 
             const fetchFiends = await fetch(`http://localhost:8088/fiends`, {
@@ -61,8 +49,7 @@ export const Users = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, t
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(obj)
             })
-            await setTest(!test)
-            // fetchAll()
+            fetchAll()
         }
     }
     return (

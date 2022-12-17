@@ -1,7 +1,8 @@
 import "./Fiends.css"
 import { useState, useEffect } from "react"
+import { json } from "react-router-dom"
 
-export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, test, fiendsList }) => {
+export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, test, fiendsList, }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
@@ -10,47 +11,37 @@ export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, se
     const [filterFiends, setFilterFiends] = useState([])
     const [del, setDel] = useState(false)
 
-    // const fetchFiends = async () => {
-    //     const fetchData = await fetch(`http://localhost:8088/fiends?usersId=${projectUserObject.id}`)
-    //     const fetchJson = await fetchData.json()
-    //     setFiends(fetchJson)
-    // }
-
-    // useEffect(
-    //     () => {
-    //         fetchFiends()
-    //     }, [, del]
-    // )
-
-    useEffect(
-        () => {
-            if (fiendId !== undefined) {
-
-                const copy = fiendsList.length > 0 ? fiendsList.map(x => ({ ...x })) : <></>
-                const filterCopy = copy.length > 0 ? copy.find(x => x.fiendsId === fiendId) : <></>
-
-                setFilterFiends(filterCopy)
-            }
-        }, [fiendsList]
-    )
 
     const deleteFiend = async () => {
-        const fetchFiends = await fetch(`http://localhost:8088/fiends/${filterFiends.id}`, { method: "DELETE" })
+
+        const fiendFunction = () => {
+            if (fiendsList.length > 0) {
+                const copy = fiendsList.map(x => ({ ...x }))
+                console.log(copy)
+                const filterCopy = copy.find(x => x.fiends === fiendId)
+                console.log(filterCopy)
+                console.log(filterCopy.id)
+                return filterCopy.id
+            }
+        }
+        const fetchId = await fiendFunction()
+
+        const fetchFiends = await fetch(`http://localhost:8088/fiends/${fetchId}`, {
+            method: "DELETE",
+        })
         fetchAll()
-
-        // await setTest(!test)
-        // await fetchFiends()
-
-
     }
 
+
+
+    console.log(fiendId)
     const addFiend = async () => {
-        console.log(fiendId)
+
         if (fiendId !== undefined) {
 
             const obj = {
                 usersId: projectUserObject.id,
-                fiendsId: fiendId
+                fiends: fiendId
             }
 
             const fetchFiends = await fetch(`http://localhost:8088/fiends`, {
@@ -58,8 +49,7 @@ export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, se
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(obj)
             })
-            await setTest(!test)
-            // fetchAll()
+            fetchAll()
         }
     }
     return (

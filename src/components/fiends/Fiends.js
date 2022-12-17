@@ -1,7 +1,7 @@
 import "./Fiends.css"
 
 import { useState, useEffect } from "react"
-import { FiendsObj, FiendsProfile } from "./FiendProfile"
+import { FiendsProfile } from "./FiendProfile"
 import { Users } from "./Users"
 
 export const Fiends = () => {
@@ -48,12 +48,14 @@ export const Fiends = () => {
     useEffect(
         () => {
             const fiendCopy = fiendsList.map(x => ({ ...x }))
+
             const userCopy = usersList.map(x => ({ ...x }))
-            const filterCopy = fiendCopy.map(x => userCopy.find(user => user.id === x.fiendsId))
+
+            let filterCopy = fiendCopy.map(x => userCopy.find(user => user.id === x.fiends))
+
             setFilteredFiendsList(filterCopy)
         }, [fiendsList]
     )
-
     useEffect(
         () => {
             const copy = filteredFiendsList.map(x => ({ ...x }))
@@ -86,7 +88,7 @@ export const Fiends = () => {
         () => {
 
             const copy = usersList.length > 0 ? usersList.map(x => ({ ...x })) : <></>
-            const fiendCopy = fiendsList.length > 0 ? fiendsList.map(x => x.fiendsId) : <></>
+            const fiendCopy = fiendsList.length > 0 ? fiendsList.map(x => x.fiends) : <></>
             const filterCopy = copy.length > 0 && fiendCopy.length > 0 ? copy.filter(x =>
                 x.id !== projectUserObject.id && !fiendCopy.includes(x.id)
             ) : copy.length > 0 ? copy.filter(x => x.id != projectUserObject.id) : <></>
@@ -141,7 +143,7 @@ export const Fiends = () => {
                                 {searchedFiends.length > 0 ? searchedFiends.map(
 
                                     (fiend) => (
-                                        <> {console.log(filteredFiendsList)}
+                                        <>
                                             <FiendsProfile
                                                 key={`fiend--${fiend.id}`}
                                                 fiendId={fiend.id}
@@ -166,6 +168,7 @@ export const Fiends = () => {
                                 {searchedUsers.length > 0 ? searchedUsers.map(
                                     (fiend) => (
                                         <>
+                                            {console.log(fiend)}
                                             <Users
                                                 key={`user--${fiend.id}`}
                                                 fiendId={fiend.id}
