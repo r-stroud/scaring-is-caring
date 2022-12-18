@@ -42,7 +42,7 @@ export const Fiends = () => {
     useEffect(
         () => {
             fetchAll()
-        }, [, test]
+        }, []
     )
 
     useEffect(

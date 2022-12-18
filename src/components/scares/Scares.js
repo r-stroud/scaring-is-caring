@@ -1,5 +1,6 @@
 import "./Scares.css"
 import { EditForm } from "../forms/EditForm"
+import { FiendsProfile } from "../fiends/FiendProfile"
 
 import { useState, useEffect } from "react"
 
@@ -16,6 +17,80 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
     const [finishedFilter, setFinishedFilter] = useState([])
     const [showEdit, setShowEdit] = useState(false)
 
+    const [fiendsList, setFiendsList] = useState([])
+    const [usersList, setUsersList] = useState([])
+    const [filteredFiendsList, setFilteredFiendsList] = useState([])
+    const [search, setSearch] = useState("")
+    const [searchedFiends, setSearchedFiends] = useState([])
+    const [showFiends, setShowFiends] = useState(false)
+    const [selectedFiend, setSelectedFiend] = useState({
+        usersId: projectUserObject.id,
+        fiends: 0,
+        scaresId: id,
+        comment: "test"
+    })
+    const [fiendsName, setFiendsName] = useState("")
+
+
+    const fetchMyFiends = async () => {
+        const fetchData = await fetch(`http://localhost:8088/fiends?usersId=${projectUserObject.id}`)
+        const fetchJson = await fetchData.json()
+        setFiendsList(fetchJson)
+    }
+
+    const fetchUserList = async () => {
+        const fetchData = await fetch(`http://localhost:8088/users`)
+        const fetchJson = await fetchData.json()
+        setUsersList(fetchJson)
+    }
+
+    const fetchAll = async () => {
+        await fetchUserList()
+        await fetchMyFiends()
+
+    }
+
+    useEffect(
+        () => {
+            const fiendCopy = fiendsList.map(x => ({ ...x }))
+
+            const userCopy = usersList.map(x => ({ ...x }))
+
+            let filterCopy = fiendCopy.map(x => userCopy.find(user => user.id === x.fiends))
+
+            setFilteredFiendsList(filterCopy)
+        }, [fiendsList]
+    )
+
+    useEffect(
+        () => {
+            const copy = filteredFiendsList.map(x => ({ ...x }))
+            setSearchedFiends(copy)
+        }, [filteredFiendsList]
+    )
+
+    useEffect(
+        () => {
+            const copy = filteredFiendsList.map(x => ({ ...x }))
+            const filterCopy = copy.filter(x => {
+                return x.fullName.toLowerCase().includes(search.toLowerCase())
+            })
+            setSearchedFiends(filterCopy)
+        }, [search]
+    )
+
+    useEffect(
+        () => {
+
+            if (showFiends === false) {
+                document.getElementById(`recommendToFiend--${id}`).style.height = "0px"
+            } else {
+                document.getElementById(`recommendToFiend--${id}`).style.height = "61%"
+            }
+
+        }, [showFiends]
+    )
+
     const fetchTypes = async () => {
         const fetchData = await fetch(`http://localhost:8088/scareTypes`)
         const fetchJson = await fetchData.json()
@@ -26,6 +101,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
         () => {
 
             fetchTypes()
+            fetchAll()
         }, [, callTypes]
     )
 
@@ -69,17 +145,17 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
     )
 
     const recommend = async () => {
-        const recommnededObj = {
-            usersId: projectUserObject.id,
-            fiends: 2,
-            scaresId: id,
-            comment: "test",
-        }
+        // const recommnededObj = {
+        //     usersId: projectUserObject.id,
+        //     fiends: 2,
+        //     scaresId: id,
+        //     comment: "test",
+        // }
 
         const fetchData = await fetch(`http://localhost:8088/recommended`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(recommnededObj)
+            body: JSON.stringify(selectedFiend)
         })
 
     }
@@ -290,14 +366,16 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                         if (!height) {
                             document.getElementById(`scareBackground--${id}`).style.height = "0px"
                             document.getElementById(`scareBackground--${id}`).style.transitionDelay = "0s"
-                            document.getElementById(`scare--${id}`).style.transitionDelay = "1s"
+                            document.getElementById(`scare--${id}`).style.transitionDelay = "0.8s"
                             document.getElementById(`scare--${id}`).style.height = "85%"
+                            setShowFiends(false)
                             setHeight(!height)
                         } else {
                             document.getElementById(`scareBackground--${id}`).style.height = "85%"
-                            document.getElementById(`scareBackground--${id}`).style.transitionDelay = "1s"
+                            document.getElementById(`scareBackground--${id}`).style.transitionDelay = "0.8s"
                             document.getElementById(`scare--${id}`).style.transitionDelay = "0s"
                             document.getElementById(`scare--${id}`).style.height = "0px"
+                            setShowFiends(false)
                             setHeight(!height)
                         }
 
@@ -312,6 +390,71 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                     </section>
 
                 </section>
+                {/* recommendation */}
+                <section className="recommend-to-fiend" id={`recommendToFiend--${id}`}>
+                    <div className="recommend-fiend-header">SELECT A FIEND:</div>
+                    <div className="recommend-fiend-search">
+                        <input
+                            className="select-a-fiend"
+                            onChange={(changeEvent) => (
+                                setSearch(changeEvent.target.value))
+                            }
+                            type="text"
+                            placeholder="SEARCH FOR A FIEND"
+                        />
+                    </div>
+
+                    <div>
+                        {searchedFiends.length > 0 ? searchedFiends.map(
+
+                            (fiend) => (
+                                <>
+                                    <ul className="recommend-fiend-container">
+                                        <li id={`recommendFiendItem--${fiend.id}`}
+                                            onClick={(e) => {
+                                                { console.log(fiend) }
+                                                const copy = selectedFiend
+                                                copy.fiends = e.target.value
+                                                setSelectedFiend(copy)
+                                                setFiendsName(fiend.fullName)
+                                            }}
+                                            className="recommend-fiend-item"
+                                            type="radio"
+                                            name="fiends"
+                                            value={fiend.id} >{fiend.fullName}</li></ul>
+                                </>
+                            ))
+                            : <></>}
+                    </div>
+                    <div className="recommend-fiend-header">ADD A COMMENT:</div>
+                    <div className="recommend-textarea-container">
+                        <textarea
+                            className="recommend-textarea"
+                            onChange={
+                                (e) => {
+                                    const copy = selectedFiend
+                                    copy.comment = e.target.value
+                                    setSelectedFiend(copy)
+                                }
+                            } />
+                    </div>
+                    <div className="recommend-button-container">
+                        {fiendsName === "" ? <div className="no-fiend-selected">SELECT A FIEND</div> :
+                            <button
+                                className="recommend-button"
+                                onClick={
+                                    () => {
+                                        recommend()
+                                        setShowFiends(false)
+                                    }
+                                }
+                            >
+                                <span>RECOMMEND TO:</span>
+                                <span className="recommend-to-button-name">{fiendsName}</span>
+                            </button>}
+                    </div>
+                </section>
+
                 <section className="scareBackground" id={`scareBackground--${id}`} style={{ backgroundImage: `url(${img})` }} >
 
 
@@ -363,8 +506,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                             </div>
                         </section>
                     </section>
-                    {/* <div className="comments">COMMENTS</div>
-                    <div className="recommend">RECOMMEND</div> */}
                     <section className="options">
                         {recommendation ?
                             <>
@@ -383,7 +524,9 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                             </> :
                             <>
                                 <div onClick={
-                                    () => { recommend() }}>
+                                    () => {
+                                        setShowFiends(!showFiends)
+                                    }}>
                                     RECOMMEND</div>
                                 {finishedFilter.length > 0 ?
                                     <section className="collections">
