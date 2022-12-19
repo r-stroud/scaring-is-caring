@@ -1,0 +1,23 @@
+.recommended-by,
+.recommended-comment {
+    background-color: white;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 100%;
+    margin: 5px auto;
+    position: relative;
+    right: 25px;
+    text-align: center;
+}
+
+.recommended-by span,
+.recommended-comment span {
+    font-weight: bold;
+    padding: 0 0px 0 8px;
+    font-size: 18px;
+}
+
+.recommended-comment span {
+    display: block;
+}

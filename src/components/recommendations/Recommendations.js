@@ -3,6 +3,7 @@ import "./Recommendations.css"
 
 import { useState, useEffect } from "react"
 import { Scares } from "../scares/Scares"
+import { createPath } from "react-router-dom"
 
 
 export const Recommendations = () => {
@@ -17,7 +18,7 @@ export const Recommendations = () => {
     const [filterScares, setFilterScares] = useState([])
 
     const fetchScares = async () => {
-        const fetchData = await fetch(`http://localhost:8088/recommended?_expand=scares&fiends=${projectUserObject.id}`)
+        const fetchData = await fetch(`http://localhost:8088/recommended?_expand=scares&_expand=users&fiends=${projectUserObject.id}`)
         const fetchJson = await fetchData.json()
         setScares(fetchJson)
     }
@@ -83,6 +84,9 @@ export const Recommendations = () => {
                             <>
 
                                 <div key={`recommended-scare-container--${scare.scaresId}`} className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" >
+
+                                    <div className="recommended-by">RECOMMENDED BY : <span>{scare.users.fullName}</span></div>
+                                    <div className="recommended-comment"> {scare.comment}</div>
                                     <div key={`recommended-scare-item--${scare.scaresId}`} className="collectionItem allScaresItem">
                                         <Scares
                                             key={`recommended--${scare.scaresId}`}

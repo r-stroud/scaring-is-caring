@@ -181,8 +181,24 @@
     font-size: 14px;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+.recommend-scroll-container {
+    overflow: hidden;
+}
+
+.recommend-scroll {
+    overflow-y: scroll;
+    height: 80px;
+}
+
+
 .recommend-to-fiend {
-    border: 1px black solid;
+    border-color: black;
+    border-width: 0 1px 0 1px;
+    border-style: solid;
     background-color: white;
     position: absolute;
     height: 0px;
@@ -234,7 +250,7 @@
 
 .recommend-button-container {
     width: 80%;
-    margin: 2px auto;
+    margin: 4px auto;
 }
 
 .recommend-button {

@@ -145,12 +145,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
     )
 
     const recommend = async () => {
-        // const recommnededObj = {
-        //     usersId: projectUserObject.id,
-        //     fiends: 2,
-        //     scaresId: id,
-        //     comment: "test",
-        // }
 
         const fetchData = await fetch(`http://localhost:8088/recommended`, {
             method: "POST",
@@ -403,28 +397,29 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                             placeholder="SEARCH FOR A FIEND"
                         />
                     </div>
+                    <div className="recommend-scroll-container">
+                        <div className="recommend-scroll">
+                            {searchedFiends.length > 0 ? searchedFiends.map(
 
-                    <div>
-                        {searchedFiends.length > 0 ? searchedFiends.map(
-
-                            (fiend) => (
-                                <>
-                                    <ul className="recommend-fiend-container">
-                                        <li id={`recommendFiendItem--${fiend.id}`}
-                                            onClick={(e) => {
-                                                { console.log(fiend) }
-                                                const copy = selectedFiend
-                                                copy.fiends = e.target.value
-                                                setSelectedFiend(copy)
-                                                setFiendsName(fiend.fullName)
-                                            }}
-                                            className="recommend-fiend-item"
-                                            type="radio"
-                                            name="fiends"
-                                            value={fiend.id} >{fiend.fullName}</li></ul>
-                                </>
-                            ))
-                            : <></>}
+                                (fiend) => (
+                                    <>
+                                        <ul className="recommend-fiend-container">
+                                            <li id={`recommendFiendItem--${fiend.id}`}
+                                                onClick={(e) => {
+                                                    { console.log(fiend) }
+                                                    const copy = selectedFiend
+                                                    copy.fiends = e.target.value
+                                                    setSelectedFiend(copy)
+                                                    setFiendsName(fiend.fullName)
+                                                }}
+                                                className="recommend-fiend-item"
+                                                type="radio"
+                                                name="fiends"
+                                                value={fiend.id} >{fiend.fullName}</li></ul>
+                                    </>
+                                ))
+                                : <></>}
+                        </div>
                     </div>
                     <div className="recommend-fiend-header">ADD A COMMENT:</div>
                     <div className="recommend-textarea-container">
