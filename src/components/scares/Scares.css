@@ -157,6 +157,12 @@
     filter: invert(90%)
 }
 
+.heartRating {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
 
 .heart {
     width: 23px;
@@ -290,6 +296,15 @@
     width: 50%;
 }
 
+.options .collected {
+    background-color: rgb(163, 150, 72);
+}
+
+.options .collected:hover {
+    background-color: rgb(163, 150, 72);
+}
+
+
 .collections .remove {
     width: 25%;
 }
@@ -416,6 +431,7 @@ h1 {
     font-size: 50px;
     z-index: 500;
 }
+
 
 @media only screen and (max-width: 925px) {
     .filter-scares {

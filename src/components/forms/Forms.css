@@ -96,20 +96,6 @@ select {
     position: relative;
 }
 
-/* .preview {
-    position: relative;
-    height: 770px;
-    width: 400px;
-    background-color: rgb(219, 70, 70);
-    bottom: 146px;
-    right: -610px;
-    z-index: 199;
-    transition: 1s;
-    border-radius: 1%;
-    box-shadow: 2px 2px 5px 2px black;
-    ;
-} */
-
 .preview {
     padding-top: 0px;
     background-image: url("../capstone-images/skull-background.jpg");
@@ -117,7 +103,6 @@ select {
     background-size: cover;
     height: 100%;
     border-radius: 20px;
-    /* display: block; */
 }
 
 
@@ -125,16 +110,10 @@ select {
     margin-top: -50px;
 }
 
-/* .title-and-image {
-    display: flex;
-    justify-content: space-between;
-} */
-
 .type-and-button {
     display: flex;
     justify-content: space-between;
 }
-
 
 .skeletonHands {
     position: absolute;

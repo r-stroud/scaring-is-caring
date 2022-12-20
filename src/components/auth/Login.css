@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
 .h1,
 h1 {
     font-size: 2.5rem;
@@ -20,6 +24,7 @@ fieldset {
     width: 25em;
 }
 
+
 .label--login {
     width: 8rem;
     display: inline-block;
@@ -40,6 +45,7 @@ fieldset {
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-family: "Spectral SC";
 }
 
 .container--login {
@@ -51,7 +57,7 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0, 0%, 100%, 0.40);
+    /* background-color: hsla(0, 0%, 100%, 0.40); */
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }
@@ -59,4 +65,62 @@ fieldset {
 .button--close {
     position: relative;
     bottom: -2rem;
+}
+
+#scaring {
+    z-index: 2;
+}
+
+#is {
+    z-index: 1;
+}
+
+#scaring,
+#is,
+#caring {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#scaring div,
+#is div,
+#caring div {
+    font-family: 'Segoe UI';
+    background-image: url("../capstone-images/skullpile.jpg");
+    background-clip: text;
+    background-size: 480px;
+    background-position: right bottom;
+    color: transparent;
+    align-self: center;
+    animation-name: colorChange;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    font-size: 20vw;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 0vh;
+}
+
+.login-title {
+    font-family: 'Segoe UI';
+    background-image: url("../capstone-images/skullpile.jpg");
+    background-clip: text;
+    background-size: 480px;
+    background-position: right bottom;
+    color: transparent;
+    align-self: center;
+    animation-name: colorChange;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    font-size: 9vw;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.login-bttn {
+    padding: 5px 7px;
+    font-family: "Spectral SC";
 }

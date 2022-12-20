@@ -55,6 +55,7 @@ export const Register = (props) => {
 
     return (
         <main style={{ textAlign: "center" }}>
+            <div className="login-title">SCARING IS CARING</div>
             <form className="form--login" onSubmit={handleRegister}>
                 {/* <h1 className="h3 mb-3 font-weight-normal">Please Register for Scaring Is Caring</h1> */}
                 <fieldset>
@@ -70,7 +71,9 @@ export const Register = (props) => {
                         placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <button
+                        className="login-bttn"
+                        type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>

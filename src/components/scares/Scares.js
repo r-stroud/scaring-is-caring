@@ -30,7 +30,62 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
         comment: "test"
     })
     const [fiendsName, setFiendsName] = useState("")
+    const [scaresRating, setScaresRating] = useState([])
+    const [filteredRating, setFilteredRating] = useState([])
+    const [filteredRatingId, setFilteredRatingId] = useState("")
+    const [newScaresRatingObj, setNewScaresRatingObj] = useState({
+        usersId: projectUserObject.id,
+        scaresId: id,
+        rating: 0
+    })
 
+    const fetchMyRatings = async () => {
+        const fetchData = await fetch(`http://localhost:8088/ratings?usersId=${projectUserObject.id}`)
+        const fetchJson = await fetchData.json()
+        setScaresRating(fetchJson)
+    }
+
+    useEffect(
+        () => {
+            const copy = scaresRating.map(x => ({ ...x }))
+            const filterCopy = copy.find(x => x.scaresId === id)
+            setFilteredRatingId(filterCopy !== undefined ? filterCopy.id : "")
+            setFilteredRating(filterCopy !== undefined ? filterCopy.rating : 0)
+        }, [scaresRating]
+    )
+
+    const addRating = async (num) => {
+
+        const copy = newScaresRatingObj
+        copy.rating = num
+        setNewScaresRatingObj(copy)
+
+        if (filteredRating === 0) {
+
+            const addReview = async () => {
+                const fetchData = await fetch(`http://localhost:8088/ratings`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newScaresRatingObj)
+                })
+            }
+            await addReview()
+            await fetchMyRatings()
+
+        } else {
+
+            const editReview = async () => {
+                const fetchData = await fetch(`http://localhost:8088/ratings/${filteredRatingId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newScaresRatingObj)
+                })
+            }
+            await editReview()
+            await fetchMyRatings()
+
+        }
+    }
 
     const fetchMyFiends = async () => {
         const fetchData = await fetch(`http://localhost:8088/fiends?usersId=${projectUserObject.id}`)
@@ -47,7 +102,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
     const fetchAll = async () => {
         await fetchUserList()
         await fetchMyFiends()
-
     }
 
     useEffect(
@@ -99,7 +153,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
 
     useEffect(
         () => {
-
+            fetchMyRatings()
             fetchTypes()
             fetchAll()
         }, [, callTypes]
@@ -207,45 +261,6 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
 
     }
 
-
-
-    const rate = (num) => {
-
-        const rate = document.getElementById(`heart${num}--${id}`)
-
-        const heart1 = document.getElementById(`heart1--${id}`)
-        const heart2 = document.getElementById(`heart2--${id}`)
-        const heart3 = document.getElementById(`heart3--${id}`)
-        const heart4 = document.getElementById(`heart4--${id}`)
-        const heart5 = document.getElementById(`heart5--${id}`)
-
-        rate.addEventListener("click", (event) => {
-
-            if (num > 4) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-                heart4.style.filter = " grayscale(0%) brightness(100%)"
-                heart5.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 3) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-                heart4.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 2) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 1) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 0) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-            }
-
-        })
-    }
-
     const rateUp = (num) => {
 
         const rate = document.getElementById(`heart${num}--${id}`)
@@ -256,31 +271,29 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
         const heart4 = document.getElementById(`heart4--${id}`)
         const heart5 = document.getElementById(`heart5--${id}`)
 
-        rate.addEventListener("mouseover", (event) => {
+        if (num > 4) {
+            heart1.style.filter = " grayscale(0%) brightness(100%)"
+            heart2.style.filter = " grayscale(0%) brightness(100%)"
+            heart3.style.filter = " grayscale(0%) brightness(100%)"
+            heart4.style.filter = " grayscale(0%) brightness(100%)"
+            heart5.style.filter = " grayscale(0%) brightness(100%)"
+        } else if (num > 3) {
+            heart1.style.filter = " grayscale(0%) brightness(100%)"
+            heart2.style.filter = " grayscale(0%) brightness(100%)"
+            heart3.style.filter = " grayscale(0%) brightness(100%)"
+            heart4.style.filter = " grayscale(0%) brightness(100%)"
+        } else if (num > 2) {
+            heart1.style.filter = " grayscale(0%) brightness(100%)"
+            heart2.style.filter = " grayscale(0%) brightness(100%)"
+            heart3.style.filter = " grayscale(0%) brightness(100%)"
+        } else if (num > 1) {
+            heart1.style.filter = " grayscale(0%) brightness(100%)"
+            heart2.style.filter = " grayscale(0%) brightness(100%)"
+        } else if (num > 0) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
+                heart1.style.filter = " grayscale(100%) brightness(10%)"
+        }
 
-            if (num > 4) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-                heart4.style.filter = " grayscale(0%) brightness(100%)"
-                heart5.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 3) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-                heart4.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 2) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-                heart3.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 1) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-                heart2.style.filter = " grayscale(0%) brightness(100%)"
-            } else if (num > 0) {
-                heart1.style.filter = " grayscale(0%) brightness(100%)"
-            }
-
-        })
     }
 
     const rateDown = (num) => {
@@ -293,31 +306,53 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
         const heart4 = document.getElementById(`heart4--${id}`)
         const heart5 = document.getElementById(`heart5--${id}`)
 
-        rate.addEventListener("mouseout", (event) => {
-
-            if (num > 4) {
+        if (num > 4) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
                 heart1.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 1 ? heart2.style.filter = " grayscale(0%) brightness(100%)" :
                 heart2.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 2 ? heart3.style.filter = " grayscale(0%) brightness(100%)" :
                 heart3.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 3 ? heart4.style.filter = " grayscale(0%) brightness(100%)" :
                 heart4.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 4 ? heart5.style.filter = " grayscale(0%) brightness(100%)" :
                 heart5.style.filter = " grayscale(100%) brightness(10%)"
-            } else if (num > 3) {
+        } else if (num > 3) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
                 heart1.style.filter = " grayscale(100%) brightness(10%)"
-                heart2.style.filter = " grayscale(100%) brightness(10%)"
-                heart3.style.filter = " grayscale(100%) brightness(10%)"
-                heart4.style.filter = " grayscale(100%) brightness(10%)"
-            } else if (num > 2) {
-                heart1.style.filter = " grayscale(100%) brightness(10%)"
-                heart2.style.filter = " grayscale(100%) brightness(10%)"
-                heart3.style.filter = " grayscale(100%) brightness(10%)"
-            } else if (num > 1) {
-                heart1.style.filter = " grayscale(100%) brightness(10%)"
-                heart2.style.filter = " grayscale(100%) brightness(10%)"
-            } else if (num > 0) {
-                heart1.style.filter = " grayscale(100%) brightness(10%)"
-            }
 
-        })
+            filteredRating > 1 ? heart2.style.filter = " grayscale(0%) brightness(100%)" :
+                heart2.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 2 ? heart3.style.filter = " grayscale(0%) brightness(100%)" :
+                heart3.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 3 ? heart4.style.filter = " grayscale(0%) brightness(100%)" :
+                heart4.style.filter = " grayscale(100%) brightness(10%)"
+        } else if (num > 2) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
+                heart1.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 1 ? heart2.style.filter = " grayscale(0%) brightness(100%)" :
+                heart2.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 2 ? heart3.style.filter = " grayscale(0%) brightness(100%)" :
+                heart3.style.filter = " grayscale(100%) brightness(10%)"
+        } else if (num > 1) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
+                heart1.style.filter = " grayscale(100%) brightness(10%)"
+
+            filteredRating > 1 ? heart2.style.filter = " grayscale(0%) brightness(100%)" :
+                heart2.style.filter = " grayscale(100%) brightness(10%)"
+        } else if (num > 0) {
+            filteredRating > 0 ? heart1.style.filter = " grayscale(0%) brightness(100%)" :
+                heart1.style.filter = " grayscale(100%) brightness(10%)"
+        }
+
     }
 
 
@@ -466,29 +501,109 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                         <section className="ratings-container">
 
                             <div className="userRating">USER:
-                                <div className="heartRating">
-                                    <img className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={document.getElementById(`heart1--${id}`) ? rateUp(1) : ""}
-                                        onMouseOut={document.getElementById(`heart1--${id}`) ? rateDown(1) : ""} />
+                                <ul className="heartRating">
+                                    <li value="1" > <img
+                                        style={filteredRating > 0 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={
+                                            () => {
+                                                rateUp(1)
+                                            }
+                                        }
+                                        onMouseOut={
+                                            () => {
+                                                rateDown(1)
+                                            }
+                                        }
+                                        onClick={
+                                            () => {
+                                                addRating(1)
+                                            }
+                                        }
+                                    /></li>
 
-                                    <img className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={document.getElementById(`heart2--${id}`) ? rateUp(2) : ""}
-                                        onMouseOut={document.getElementById(`heart2--${id}`) ? rateDown(2) : ""} />
+                                    <li value="2">
+                                        <img
+                                            style={filteredRating > 1 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                            className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
+                                            onMouseOver={
+                                                () => {
+                                                    rateUp(2)
+                                                }
+                                            }
+                                            onMouseOut={
+                                                () => {
+                                                    rateDown(2)
+                                                }
+                                            }
+                                            onClick={
+                                                () => {
+                                                    addRating(2)
+                                                }
+                                            }
+                                        /></li>
 
-                                    <img className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={document.getElementById(`heart3--${id}`) ? rateUp(3) : ""}
-                                        onMouseOut={document.getElementById(`heart3--${id}`) ? rateDown(3) : ""} />
+                                    <li value="3"> <img
+                                        style={filteredRating > 2 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={
+                                            () => {
+                                                rateUp(3)
+                                            }
+                                        }
+                                        onMouseOut={
+                                            () => {
+                                                rateDown(3)
+                                            }
+                                        }
+                                        onClick={
+                                            () => {
+                                                addRating(3)
+                                            }
+                                        }
+                                    /></li>
 
-                                    <img className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={document.getElementById(`heart4--${id}`) ? rateUp(4) : ""}
-                                        onMouseOut={document.getElementById(`heart4--${id}`) ? rateDown(4) : ""} />
-                                    <img
+                                    <li value="4"><img
+                                        style={filteredRating > 3 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
+                                        onMouseOver={
+                                            () => {
+                                                rateUp(4)
+                                            }
+                                        }
+                                        onMouseOut={
+                                            () => {
+                                                rateDown(4)
+                                            }
+                                        }
+                                        onClick={
+                                            () => {
+                                                addRating(4)
+                                            }
+                                        }
+                                    /></li>
+                                    <li value="5"><img
+                                        style={filteredRating > 4 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
                                         className="heart heart5"
                                         id={`heart5--${id}`}
                                         src={require("../capstone-images/heart.png")}
-                                        onMouseOver={document.getElementById(`heart5--${id}`) ? rateUp(5) : ""}
-                                        onMouseOut={document.getElementById(`heart5--${id}`) ? rateDown(5) : ""} />
-                                </div>
+                                        onMouseOver={
+                                            () => {
+                                                rateUp(5)
+                                            }
+                                        }
+                                        onMouseOut={
+                                            () => {
+                                                rateDown(5)
+                                            }
+                                        }
+                                        onClick={
+                                            () => {
+                                                addRating(5)
+                                            }
+                                        }
+                                    /></li>
+                                </ul>
                             </div>
                             <div className="avgRating">AVERAGE:
                                 <div>
