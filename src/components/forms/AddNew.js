@@ -95,9 +95,6 @@ export const AddNew = ({ fetchWelcome }) => {
 
     }
 
-    console.log(scaresLength.length > 0 ? scaresLength.length + 1 : 1)
-
-
     return (
         <>
 
@@ -121,7 +118,7 @@ export const AddNew = ({ fetchWelcome }) => {
                                 required
                                 autoFocus
                                 type="text"
-                                className="form-field"
+                                className="form-field add"
                                 placeholder="Please enter a title"
                                 value={scareDetails.name}
                                 onChange={
@@ -139,7 +136,7 @@ export const AddNew = ({ fetchWelcome }) => {
                                 required
                                 autoFocus
                                 type="text"
-                                className="form-field"
+                                className="form-field add"
                                 placeholder="Please enter an image URL"
                                 value={scareDetails.img}
                                 onChange={

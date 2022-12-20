@@ -46,48 +46,34 @@ export const Welcome = () => {
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 1)
-                console.log(filteredCopy)
                 const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
-                console.log(lastElement)
                 setFilterLatestFilm(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
-    console.log(filterLatestFilm)
 
     useEffect(
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 2)
-                console.log(filteredCopy)
                 const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
-                console.log(lastElement)
                 setFilterLatestGame(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
-    console.log(filterLatestGame.length)
-    console.log(filterLatestGame)
 
     useEffect(
         () => {
             if (filterScares.length > 0 && filterScares !== null) {
                 const copy = filterScares.map(x => ({ ...x }))
-                console.log(copy)
                 const filteredCopy = copy.filter(x => parseInt(x.scares.scareTypesId) === 3)
-                console.log(filteredCopy)
                 const lastElement = filteredCopy[filteredCopy.length > 0 ? filteredCopy.length - 1 : 0]
-                console.log(lastElement)
                 setFilterLatestBook(lastElement !== undefined ? [lastElement] : "")
             }
         }, [filterScares]
     )
-    console.log(filterLatestBook.length)
-    console.log(filterLatestBook)
 
     const hideHands = () => {
         const form = document.getElementById("form")
@@ -144,7 +130,6 @@ export const Welcome = () => {
                             <div className="scareContainer">{filterLatestFilm !== undefined && filterLatestFilm.length > 0 ?
                                 <div className="recentScares">
                                     <>
-                                        {console.log(filterLatestFilm)}
                                         <Scares
                                             key={filterLatestFilm[0].scaresId}
                                             id={filterLatestFilm[0].scaresId}
