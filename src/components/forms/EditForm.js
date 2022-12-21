@@ -83,6 +83,7 @@ export const EditForm = ({
                             typeId={editTypeId}
                             creatorId={editCreatorId}
                             creatorName={editCreatorName}
+                            form={true}
                         />
                     </div>
                 </div>
@@ -196,6 +197,7 @@ export const EditForm = ({
                                 creatorId={scareDetails.usersId}
                                 creatorName={scareDetails.userName}
                                 callTypes={callTypes}
+                                form={true}
                             /> : <></>
                         }
                     </div>

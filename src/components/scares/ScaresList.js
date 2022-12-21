@@ -16,7 +16,8 @@ export const ScaresList = () => {
     const fetchScares = async () => {
         const fetchData = await fetch(`http://localhost:8088/scares?_expand=scareTypes&_expand=users`)
         const fetchJson = await fetchData.json()
-        setScares(fetchJson)
+        const sortData = fetchJson.sort((a, b) => a.name.localeCompare(b.name))
+        setScares(sortData)
     }
 
     useEffect(

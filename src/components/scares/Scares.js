@@ -4,7 +4,7 @@ import { FiendsProfile } from "../fiends/FiendProfile"
 
 import { useState, useEffect } from "react"
 
-export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares, callTypes, recommendation, recommendationId }) => {
+export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares, callTypes, recommendation, recommendationId, form }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
@@ -635,7 +635,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                             <>
                                 <div onClick={
                                     () => {
-                                        setShowFiends(!showFiends)
+                                        { form ? <></> : setShowFiends(!showFiends) }
                                     }}>
                                     RECOMMEND</div>
                                 {finishedFilter.length > 0 ?
@@ -644,7 +644,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                                         <div className="remove"
                                             onClick={
                                                 () => {
-                                                    deleteFromCollection()
+                                                    { form ? <></> : deleteFromCollection() }
                                                 }
                                             }
                                         >REMOVE</div>
@@ -652,7 +652,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
 
                                     <div onClick={
                                         () => {
-                                            addToCollection()
+                                            { form ? <></> : addToCollection() }
 
                                         }
                                     }>ADD TO COLLECTION</div>}
@@ -660,13 +660,15 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                                     {creatorId === projectUserObject.id ? <>
                                         <div className="perm-edit" onClick={
                                             () => {
-                                                setShowEdit(!showEdit)
+                                                { form ? <></> : setShowEdit(!showEdit) }
 
                                             }
                                         }>EDIT SCARE</div>
 
                                         <div className="perm-delete" onClick={
-                                            () => { permanentDelete() }
+                                            () => {
+                                                { form ? <></> : permanentDelete() }
+                                            }
                                         }>DELETE</div>
                                     </> : <></>}
 
