@@ -2,6 +2,7 @@
     flex-wrap: wrap;
     display: flex;
     z-index: 2000;
+    position: fixed;
 }
 
 .edit-form {

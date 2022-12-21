@@ -212,6 +212,7 @@ export const AddNew = ({ fetchWelcome }) => {
                         creatorId={scareDetails.usersId}
                         creatorName={scareDetails.userName}
                         callTypes={callTypes}
+                        form={true}
                     />
                 </section>
             </section>

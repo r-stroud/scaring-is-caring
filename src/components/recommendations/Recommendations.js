@@ -20,7 +20,8 @@ export const Recommendations = () => {
     const fetchScares = async () => {
         const fetchData = await fetch(`http://localhost:8088/recommended?_expand=scares&_expand=users&fiends=${projectUserObject.id}`)
         const fetchJson = await fetchData.json()
-        setScares(fetchJson)
+        const sortData = fetchJson.sort((a, b) => a.scares.name.localeCompare(b.scares.name))
+        setScares(sortData)
     }
 
     useEffect(

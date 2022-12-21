@@ -17,7 +17,8 @@ export const Collections = () => {
     const fetchScares = async () => {
         const fetchData = await fetch(`http://localhost:8088/finished?_expand=users&_expand=scares`)
         const fetchJson = await fetchData.json()
-        setScares(fetchJson)
+        const sortData = fetchJson.sort((a, b) => a.scares.name.localeCompare(b.scares.name))
+        setScares(sortData)
     }
 
     useEffect(
