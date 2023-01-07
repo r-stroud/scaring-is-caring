@@ -463,5 +463,10 @@ h1 {
 .my-creations span {
     margin: 0 0 0 12px;
     font-size: 14px;
+}
 
+.collect-to-rate {
+    padding: 24px 4px 19px;
+    color: rgb(156, 4, 4);
+    font-size: 12px;
 }
