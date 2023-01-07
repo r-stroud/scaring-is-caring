@@ -38,6 +38,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
         scaresId: id,
         rating: 0
     })
+    const [averageRating, setAverageRating] = useState([])
 
     const fetchMyRatings = async () => {
         const fetchData = await fetch(`http://localhost:8088/ratings?usersId=${projectUserObject.id}`)
@@ -71,6 +72,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
             }
             await addReview()
             await fetchMyRatings()
+            await fetchAvgRating()
 
         } else {
 
@@ -83,8 +85,16 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
             }
             await editReview()
             await fetchMyRatings()
+            await fetchAvgRating()
 
         }
+    }
+
+    const fetchAvgRating = async () => {
+        const fetchData = await fetch(`http://localhost:8088/ratings?scaresId=${id}`)
+        const fetchJson = await fetchData.json()
+        setAverageRating(fetchJson)
+
     }
 
     const fetchMyFiends = async () => {
@@ -153,11 +163,14 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
 
     useEffect(
         () => {
+            fetchAvgRating()
             fetchMyRatings()
             fetchTypes()
             fetchAll()
         }, [, callTypes]
     )
+
+    console.log(averageRating)
 
     const fetchFinished = async () => {
         const fetchData = await fetch(`http://localhost:8088/finished`)
@@ -356,6 +369,16 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
     }
 
 
+    const getAvgRating = () => {
+        if (averageRating.length > 0) {
+            let average = 0
+            averageRating.forEach(x => average += x.rating)
+            average = average / averageRating.length
+            return average
+        }
+    }
+
+    console.log(getAvgRating())
     return (
         <>
             {showEdit ?
@@ -499,119 +522,142 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                     <section className="ratings">
                         <div className="ratings-title">RATINGS:</div>
                         <section className="ratings-container">
-
-                            <div className="userRating">USER:
-                                <ul className="heartRating">
-                                    <li value="1" > <img
-                                        style={filteredRating > 0 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
-                                        className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={
-                                            () => {
-                                                rateUp(1)
-                                            }
-                                        }
-                                        onMouseOut={
-                                            () => {
-                                                rateDown(1)
-                                            }
-                                        }
-                                        onClick={
-                                            () => {
-                                                addRating(1)
-                                            }
-                                        }
-                                    /></li>
-
-                                    <li value="2">
-                                        <img
-                                            style={filteredRating > 1 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
-                                            className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
+                            {finishedFilter.length > 0 ?
+                                <div className="userRating">USER:
+                                    <ul className="heartRating">
+                                        <li value="1" > <img
+                                            style={filteredRating > 0 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                            className="heart heart1" id={`heart1--${id}`} src={require("../capstone-images/heart.png")}
                                             onMouseOver={
                                                 () => {
-                                                    rateUp(2)
+                                                    rateUp(1)
                                                 }
                                             }
                                             onMouseOut={
                                                 () => {
-                                                    rateDown(2)
+                                                    rateDown(1)
                                                 }
                                             }
                                             onClick={
                                                 () => {
-                                                    addRating(2)
+                                                    { form ? <></> : addRating(1) }
                                                 }
                                             }
                                         /></li>
 
-                                    <li value="3"> <img
-                                        style={filteredRating > 2 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
-                                        className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={
-                                            () => {
-                                                rateUp(3)
-                                            }
-                                        }
-                                        onMouseOut={
-                                            () => {
-                                                rateDown(3)
-                                            }
-                                        }
-                                        onClick={
-                                            () => {
-                                                addRating(3)
-                                            }
-                                        }
-                                    /></li>
+                                        <li value="2">
+                                            <img
+                                                style={filteredRating > 1 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                                className="heart heart2" id={`heart2--${id}`} src={require("../capstone-images/heart.png")}
+                                                onMouseOver={
+                                                    () => {
+                                                        rateUp(2)
+                                                    }
+                                                }
+                                                onMouseOut={
+                                                    () => {
+                                                        rateDown(2)
+                                                    }
+                                                }
+                                                onClick={
+                                                    () => {
+                                                        { form ? <></> : addRating(2) }
+                                                    }
+                                                }
+                                            /></li>
 
-                                    <li value="4"><img
-                                        style={filteredRating > 3 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
-                                        className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
-                                        onMouseOver={
-                                            () => {
-                                                rateUp(4)
+                                        <li value="3"> <img
+                                            style={filteredRating > 2 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                            className="heart heart3" id={`heart3--${id}`} src={require("../capstone-images/heart.png")}
+                                            onMouseOver={
+                                                () => {
+                                                    rateUp(3)
+                                                }
                                             }
-                                        }
-                                        onMouseOut={
-                                            () => {
-                                                rateDown(4)
+                                            onMouseOut={
+                                                () => {
+                                                    rateDown(3)
+                                                }
                                             }
-                                        }
-                                        onClick={
-                                            () => {
-                                                addRating(4)
+                                            onClick={
+                                                () => {
+                                                    { form ? <></> : addRating(3) }
+                                                }
                                             }
-                                        }
-                                    /></li>
-                                    <li value="5"><img
-                                        style={filteredRating > 4 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
-                                        className="heart heart5"
-                                        id={`heart5--${id}`}
-                                        src={require("../capstone-images/heart.png")}
-                                        onMouseOver={
-                                            () => {
-                                                rateUp(5)
+                                        /></li>
+
+                                        <li value="4"><img
+                                            style={filteredRating > 3 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                            className="heart heart4" id={`heart4--${id}`} src={require("../capstone-images/heart.png")}
+                                            onMouseOver={
+                                                () => {
+                                                    rateUp(4)
+                                                }
                                             }
-                                        }
-                                        onMouseOut={
-                                            () => {
-                                                rateDown(5)
+                                            onMouseOut={
+                                                () => {
+                                                    rateDown(4)
+                                                }
                                             }
-                                        }
-                                        onClick={
-                                            () => {
-                                                addRating(5)
+                                            onClick={
+                                                () => {
+                                                    { form ? <></> : addRating(4) }
+                                                }
                                             }
-                                        }
-                                    /></li>
-                                </ul>
-                            </div>
+                                        /></li>
+                                        <li value="5"><img
+                                            style={filteredRating > 4 ? { filter: "grayscale(0%) brightness(100%)" } : { filter: "grayscale(100%) brightness(10%)" }}
+                                            className="heart heart5"
+                                            id={`heart5--${id}`}
+                                            src={require("../capstone-images/heart.png")}
+                                            onMouseOver={
+                                                () => {
+                                                    rateUp(5)
+                                                }
+                                            }
+                                            onMouseOut={
+                                                () => {
+                                                    rateDown(5)
+                                                }
+                                            }
+                                            onClick={
+                                                () => {
+                                                    { form ? <></> : addRating(5) }
+                                                }
+                                            }
+                                        /></li>
+                                    </ul>
+                                </div> :
+                                <div className="collect-to-rate">COLLECT TO RATE</div>
+
+                            }
                             <div className="avgRating">AVERAGE:
                                 <div>
-                                    <img className="heart" src={require("../capstone-images/heart.png")} />
-                                    <img className="heart" src={require("../capstone-images/heart.png")} />
-                                    <img className="heart" src={require("../capstone-images/heart.png")} />
-                                    <img className="heart" src={require("../capstone-images/heart.png")} />
-                                    <img className="heart" src={require("../capstone-images/heart.png")} />
+                                    <img
+                                        style={getAvgRating() >= 1 ? { filter: "grayscale(0%) brightness(100%)" } :
+                                            { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart" src={require("../capstone-images/heart.png")} />
+
+                                    <img
+                                        style={getAvgRating() >= 2 ? { filter: "grayscale(0%) brightness(100%)" } :
+                                            { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart" src={require("../capstone-images/heart.png")} />
+
+                                    <img
+                                        style={getAvgRating() >= 3 ? { filter: "grayscale(0%) brightness(100%)" } :
+                                            { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart" src={require("../capstone-images/heart.png")} />
+
+                                    <img
+                                        style={getAvgRating() >= 4 ? { filter: "grayscale(0%) brightness(100%)" } :
+                                            { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart" src={require("../capstone-images/heart.png")} />
+
+                                    <img
+                                        style={getAvgRating() >= 5 ? { filter: "grayscale(0%) brightness(100%)" } :
+                                            { filter: "grayscale(100%) brightness(10%)" }}
+                                        className="heart" src={require("../capstone-images/heart.png")} />
+
                                 </div>
                             </div>
                         </section>
