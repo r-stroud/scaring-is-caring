@@ -57,6 +57,7 @@ nav {
     position: relative;
     bottom: 17px;
     left: 20px;
+    flex-wrap: wrap;
 }
 
 .navLinks .nav-item:hover {
@@ -66,18 +67,11 @@ nav {
 
 .navLinks .nav-item {
     margin: 0 5vw 0 0;
-    padding: 5px 30px;
+    padding: 5px 25px;
     border-radius: 10px;
     transition: 0.8s;
     font-weight: bold;
 }
-
-/* .profileAndLogout {
-    display: flex;
-    position: relative;
-    bottom: 17px;
-    right: 5px;
-} */
 
 .profile {
     justify-self: end;
@@ -85,15 +79,12 @@ nav {
 }
 
 .logout {
-    margin: 0 5vw 0 0vw;
-    align-self: center;
-    padding: 5px 30px;
+    margin: 0 5vw 0 0;
+    padding: 5px 25px;
     border-radius: 10px;
-    position: relative;
-    top: 3px;
     font-weight: bold;
     transition: 0.8s;
-    font-size: 18px;
+    font-size: 16px;
 
 }
 
@@ -104,7 +95,7 @@ nav {
 }
 
 .logout:hover {
-    background-color: rgb(204, 1, 1);
+    background-color: rgb(177, 53, 53);
 }
 
 .logout:hover a {
@@ -113,24 +104,19 @@ nav {
 
 
 @media only screen and (max-width: 925px) {
-    nav {
-        height: 273px;
+
+    .appTitle {
+        font-size: 9.5vw;
+        padding-top: 1.8vw;
     }
 
-}
+    .nav-item {
+        font-size: 14px;
 
-@media only screen and (max-width: 750px) {
-    nav {
-        height: 412px;
     }
 
-    .navLinks {
-        bottom: 15px;
-        flex-direction: column;
-    }
-
-    .navLinks div {
-        margin-top: 2px;
+    .logout {
+        font-size: 14px;
     }
 
 }

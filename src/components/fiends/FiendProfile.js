@@ -60,16 +60,14 @@ export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, se
                     <div className="fiend-name">{name}</div>
                     <div className="fiend-email">{email}</div>
 
-                    <div className="fiend-add">
-                        <img
-                            onClick={
-                                (clickEvent) => {
-                                    clickEvent.preventDefault()
-                                    deleteFiend()
-                                }
+                    <div className="fiend-add"
+                        onClick={
+                            (clickEvent) => {
+                                clickEvent.preventDefault()
+                                deleteFiend()
                             }
-                            className="minus"
-                            src={require("../capstone-images/minus.png")} /> </div>
+                        }> REMOVE FIEND
+                    </div>
 
                 </section>
             </section>

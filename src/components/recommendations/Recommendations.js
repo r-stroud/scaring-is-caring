@@ -54,7 +54,7 @@ export const Recommendations = () => {
         <>
             <section className="collections-list scares-list">
                 <section className="filter-scares">
-                    <div className="scares-list-title">MY <span>RECOMMENDATIONS</span></div>
+                    <div className="scares-list-title">RECOMMENDED <span>SCARES</span></div>
 
                     {/* <section className="filter-my-scares">
                         <label htmlFor="myScare">MY CREATIONS</label>
@@ -86,8 +86,9 @@ export const Recommendations = () => {
 
                                 <div key={`recommended-scare-container--${scare.scaresId}`} className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" >
 
-                                    <div className="recommended-by">RECOMMENDED BY : <span>{scare.users.fullName}</span></div>
-                                    <div className="recommended-comment"> {scare.comment}</div>
+                                    <div className="recommended-by"> {scare.users.fullName}:<img src={require("../capstone-images/handprint.png")} /></div>
+
+                                    <div className="recommended-comment">{scare.comment} </div>
                                     <div key={`recommended-scare-item--${scare.scaresId}`} className="collectionItem allScaresItem">
                                         <Scares
                                             key={`recommended--${scare.scaresId}`}

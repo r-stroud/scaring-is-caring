@@ -60,15 +60,12 @@ export const Users = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, t
 
                     <div className="fiend-name">{name}</div>
                     <div className="fiend-email">{email}</div>
-                    <div className="fiend-add">
-                        <img
-                            onClick={
-                                () => {
-                                    addFiend()
-                                }
+                    <div className="fiend-add"
+                        onClick={
+                            () => {
+                                addFiend()
                             }
-                            className="plus"
-                            src={require("../capstone-images/plus.png")} />
+                        }> ADD FIEND
                     </div>
 
                 </section>

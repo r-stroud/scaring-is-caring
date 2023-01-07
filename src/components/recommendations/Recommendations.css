@@ -1,23 +1,32 @@
 .recommended-by,
 .recommended-comment {
     background-color: white;
-    padding: 8px 10px;
-    border-radius: 10px;
-    font-size: 18px;
-    width: 100%;
-    margin: 5px auto;
+    padding: 20px 10px 0px;
+    font-size: 16px;
+    width: 300px;
+    margin: auto;
     position: relative;
-    right: 25px;
-    text-align: center;
+    right: 10px;
 }
 
-.recommended-by span,
-.recommended-comment span {
-    font-weight: bold;
-    padding: 0 0px 0 8px;
+.recommended-by {
+    color: rgb(189, 8, 8);
+    font-weight: 800;
     font-size: 18px;
+    position: relative;
+    border-radius: 10px 10px 0 0;
 }
 
-.recommended-comment span {
-    display: block;
+.recommended-comment {
+    border-radius: 0 0 10px 10px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.recommended-by img {
+    width: 50px;
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 5px;
 }

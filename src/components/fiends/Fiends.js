@@ -120,24 +120,20 @@ export const Fiends = () => {
                                         setSearch(changeEvent.target.value))
                                 }
                                 type="text"
-                                placeholder="SEARCH FOR A FIEND"
+                                placeholder="ENTER A NAME OR EMAIL"
                             />
+                            <div className="switch-filter" onClick={
+                                () => {
+                                    setSwitchFilter(!switchFilter)
+                                }
+                            }>{switchFilter ? "USERS" : "FIENDS"}</div>
                         </div>
                     </section>
 
                 </section>
                 <div className="my-fiends">
-                    <div className="switch-filter" onClick={
-                        () => {
-                            setSwitchFilter(!switchFilter)
-                        }
-                    }>{switchFilter ? "FIENDS" : "USERS"}</div>
+
                     <div className="my-fiends-scroll">
-                        <div className="fiends">{switchFilter ? "USERS" : "FIENDS"}
-                            <section className="fiends-headers">
-                                <div>NAME</div><div>EMAIL</div><div>{switchFilter ? "ADD FIEND" : "REMOVE FIEND"}</div>
-                            </section>
-                        </div>
                         {!switchFilter ?
                             <div className="my-fiends-container">
                                 {searchedFiends.length > 0 ? searchedFiends.map(

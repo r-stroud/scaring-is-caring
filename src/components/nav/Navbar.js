@@ -20,13 +20,9 @@ export const Navbar = () => {
                         onClick={
                             () => { navigate("/fiends") }
                         }>FIENDS</div>
-                    <div className="nav-item" >TBD4</div>
+                    {/* <div className="nav-item" >TBD4</div> */}
 
                     <section className="profileAndLogout">
-                        {/* <section className="profile">
-                        <div>username</div>
-                        <div>notifications</div>
-                    </section> */}
                         <section className="logout">
                             {localStorage.getItem("scary_user")
                                 ?

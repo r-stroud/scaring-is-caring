@@ -18,9 +18,9 @@
 }
 
 .filter-my-scares {
-    display: block;
+    display: flex;
     margin: 0px 0 10px;
-    padding: 5px 15px;
+    padding: 2px 0px;
     font-size: 24px;
     color: white;
 }
@@ -44,6 +44,7 @@
     padding: 5px 10px;
     font-family: "Spectral SC";
     margin: 0 15px;
+    width: 22vw;
 
 }
 
@@ -432,25 +433,35 @@ h1 {
     z-index: 500;
 }
 
-
 @media only screen and (max-width: 925px) {
-    .filter-scares {
-        padding-top: 273px;
+
+    .scares-list-title {
+        font-size: 7vw;
     }
 
-    .allScares {
-        padding-top: 318px;
+    .filter-scares input {
+        width: 35vw;
     }
 
 }
 
-@media only screen and (max-width: 750px) {
-    .filter-scares {
-        padding-top: 412px;
-    }
+.my-creations {
+    width: fit-content;
+    padding: 4px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    transition: 0.8s;
+    border: 1px rgb(97, 97, 97) solid;
+}
 
-    .allScares {
-        padding-top: 457px;
-    }
+.my-creations:hover {
+    color: rgb(156, 4, 4);
+    background-color: white;
+}
+
+.my-creations span {
+    margin: 0 0 0 12px;
+    font-size: 14px;
 
 }
