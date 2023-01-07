@@ -74,25 +74,24 @@ export const Collections = () => {
                 <section className="filter-scares">
                     <div className="scares-list-title">MY <span>SCARES</span></div>
                     <section className="filter-my-scares">
-                        <label htmlFor="myScare">MY CREATIONS</label>
+                        <div className="my-creations"
+                            style={searchMyCreations ? { backgroundColor: "white", color: "rgb(156,4,4)" } :
+                                { backgroundColor: "rgb(23,23,23)" }}
+                            onClick={
+                                () => {
+                                    setSearchMyCreations(!searchMyCreations)
+                                }
+                            }>MY CREATIONS {searchMyCreations ? <span>ON</span> : <span>OFF</span>}</div>
+
+
                         <input
-                            type="checkbox"
-                            id="myScare"
-                            name="my-scare"
-                            value="Show My Scares"
-                            onChange={() => (
-                                setSearchMyCreations(!searchMyCreations)
-                            )}
+                            onChange={(changeEvent) => (
+                                setSearch(changeEvent.target.value))
+                            }
+                            type="text"
+                            placeholder="Enter A Title"
                         />
                     </section>
-                    <input
-                        onChange={(changeEvent) => (
-                            setSearch(changeEvent.target.value))
-                        }
-                        type="text"
-                        placeholder="Enter A Title"
-                    />
-
                 </section>
                 {searchedScares.length > 0 ?
 

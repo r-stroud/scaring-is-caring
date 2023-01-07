@@ -122,7 +122,6 @@
     left: 3vw;
     transition: 1s;
     border-radius: 100px;
-    /* box-shadow: 2px 2px 5px 2px black; */
 
 }
 
@@ -166,13 +165,5 @@
 
     .homePage {
         flex-direction: column-reverse;
-        justify-content: ce;
     }
-}
-
-@media only screen and (max-width: 925px) {
-    .homePage {
-        padding-top: 375px;
-    }
-
 }
