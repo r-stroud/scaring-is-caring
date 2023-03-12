@@ -16,18 +16,29 @@ fieldset {
 
 .form--login {
     display: inline-block;
-    margin: 0 auto;
+    margin: 8vh auto 0;
     text-align: left;
+    font-family: "Spectral SC";
+    font-style: italic;
+    color: rgb(177, 53, 53);
 }
 
-.form--login>fieldset>input[type="email"] {
+.form--login>fieldset>input[type="email"],
+.form--login>fieldset>input[type="text"] {
     width: 25em;
+    margin: auto;
+}
+
+.form--login>fieldset>input[type="email"]:focus,
+.form--login>fieldset>input[type="text"]:focus {
+    outline: 2px solid rgb(177, 53, 53);
 }
 
 
 .label--login {
     width: 8rem;
     display: inline-block;
+    font-family: "Spectral SC";
 }
 
 .form-control {
@@ -38,7 +49,7 @@ fieldset {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: rgb(177, 53, 53);
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
@@ -57,9 +68,16 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45vw;
-    /* background-color: hsla(0, 0%, 100%, 0.40); */
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+}
+
+.label-login {
+    width: 25em;
+    margin: auto;
+    display: block;
+    font-size: 18px;
+
 }
 
 .button--close {
@@ -123,4 +141,25 @@ fieldset {
 .login-bttn {
     padding: 5px 7px;
     font-family: "Spectral SC";
+    transition: 0.8s;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+}
+
+.login-bttn:hover {
+    background-color: rgb(177, 53, 53);
+}
+
+.link--register {
+    color: rgb(177, 53, 53);
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(177, 53, 53);
 }

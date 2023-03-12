@@ -28,5 +28,6 @@
     position: absolute;
     z-index: 1;
     right: 10px;
-    top: 5px;
+    top: 9px;
+    transform: rotate(-20deg);
 }

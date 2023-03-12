@@ -62,7 +62,7 @@ export const Login = () => {
                     <form className="form--login" onSubmit={handleLogin}>
 
                         <fieldset>
-                            <label htmlFor="inputEmail"> Email address </label>
+                            <label class="label-login" htmlFor="inputEmail"> Email address </label>
                             <input type="email"
                                 value={email}
                                 onChange={evt => set(evt.target.value)}
