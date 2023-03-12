@@ -24,8 +24,24 @@ As a horror fan it is fun finding titles to recommend to like minded friends and
 
 [<img src="https://user-images.githubusercontent.com/106875994/224574830-4c7b3853-fc08-412a-b8cd-c2a40c462864.png" width="60">](https://reactjs.org/) [<img src="https://user-images.githubusercontent.com/106875994/224575102-80fa8326-c6de-4297-8309-aab0c495c9c8.png" width=60>](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [<img src="https://user-images.githubusercontent.com/106875994/224575292-710f917a-623b-4b6f-80c8-21280b0538b0.png" width="60">](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
+## Project Goals
 
+This capstone project was started when the focus of our studies was about to shift from front-end to back-end. I really wanted to hone all the skills I had been learning up until this point and test myself to see how well I could build a fully functioning and engaging app without the assistance of any additional frameworks or node packages outside of any provided to us at the start of the project (React and React Router DOM).
 
+## Project Challenges
+
+Attempting to complete this project without the use of additional frameworks or node packages was quite the challenge. There were many interactive features I wanted to include in this project, such as each "scare" card being able to swap from the cover to the details upon clicking the header. Time manangement, researching code, and balancing if features were possible to implement within the time alloted were regular challenges. 
+
+## Future Updates
+
+I am really happy with how this project turned out and I feel like I gained a great deal of experience and knowledge in completing it. In future updates I would like to look at organzing the CSS/JS to make it easier for future changes and readability. I was able to accomplish a lot in this project, but I feel like I could have organized it a bit better.
+
+There are also numerous features I would like to add to the app itself:
+- Customize profiles with profile names and portraits (CRUD functionality)
+- View "fiends" profiles / collections upon click
+- Complete the Queue feature
+- Add new category outside of the existing book, game, movie
+- etc.
 
 # Getting Started with Create React App
 
