@@ -44,13 +44,22 @@ There are also numerous features I would like to add to the app itself:
 - Add new category outside of the existing book, game, movie
 - etc.
 
-# Getting Started with Create React App
+## How to Install and Run
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Git clone this repo to your local machine.
+2. Setup a mock database in javascript and serve to [http://localhost:8088]. Mock database should have the below information included.
+```{
+"users" : [],
+"scares" : [],
+"scareTypes" : [],
+"finished" : [],
+"fiends" : [],
+"recommended" : [],
+"ratings" : [],
+}```
+4. 
+5. 
 
-## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
