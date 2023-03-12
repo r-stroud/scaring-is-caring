@@ -1,7 +1,22 @@
-#ScaringIsCaring
+# ScaringIsCaring
 ![image](https://user-images.githubusercontent.com/106875994/224573827-76b28cb7-1cb4-49fb-9f8e-cfff4ff3dc32.png)
 
+ScaringIsCaring is a recommendation application that allows users to create, edit, search, and recommend different "scares" to a user they have friended. A "scare" being any any book, film, or game of the horror genre.
 
+This project was created as a Front End Capstone project while attending Nashville Software School's Full Stack Web Development Bootcamp. 
+
+## Table of Contents
+- ScaringIsCaring
+  - Table of Contents
+  - Project Description
+  - Technologies Used
+  - Project Goals
+  - Challenges
+  - Future Updates
+  - How to Install and Run
+  - Credits
+
+## Project Description
 
 
 
