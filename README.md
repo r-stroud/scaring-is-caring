@@ -22,7 +22,7 @@ As a horror fan it is fun finding titles to recommend to like minded friends and
 
 ## Technologies Used
 
-[(img src="https://user-images.githubusercontent.com/106875994/224574830-4c7b3853-fc08-412a-b8cd-c2a40c462864.png" width="30%")](https://reactjs.org/)
+[<img src="https://user-images.githubusercontent.com/106875994/224574830-4c7b3853-fc08-412a-b8cd-c2a40c462864.png" width="30%">](https://reactjs.org/)
 
 
 
