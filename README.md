@@ -1,3 +1,13 @@
+#ScaringIsCaring
+![image](https://user-images.githubusercontent.com/106875994/224573827-76b28cb7-1cb4-49fb-9f8e-cfff4ff3dc32.png)
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
