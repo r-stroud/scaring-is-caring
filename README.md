@@ -24,7 +24,7 @@ As a horror fan it is fun finding titles to recommend to like minded friends and
 
 [![image](https://user-images.githubusercontent.com/106875994/224574830-4c7b3853-fc08-412a-b8cd-c2a40c462864.png)](https://reactjs.org/)
 
-[<img src="http://www.google.com.au/images/nav_logo7.png">](http://google.com.au/)
+[<img src="http://www.google.com.au/images/nav_logo7.png" width="30%">](http://google.com.au/)
 
 
 
