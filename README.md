@@ -60,11 +60,11 @@ There are also numerous features I would like to add to the app itself:
 }
 ```
 3. Set up is complete! Use the below commands to run locally. These commands may have to be run in separate terminal windows.
--Mock Database
+- Mock Database
 ```
 json-server -p 8088 scaringiscaring-db.json
 ```
--ScaringIsCaring
+- ScaringIsCaring
 ```
 npm start run
 ```
