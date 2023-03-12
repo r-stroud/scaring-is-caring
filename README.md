@@ -56,7 +56,8 @@ There are also numerous features I would like to add to the app itself:
 "fiends" : [],
 "recommended" : [],
 "ratings" : [],
-}```
+}
+```
 4. 
 5. 
 
