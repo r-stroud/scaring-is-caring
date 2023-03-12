@@ -48,7 +48,8 @@ There are also numerous features I would like to add to the app itself:
 
 1. Git clone this repo to your local machine.
 2. Setup a mock database in javascript and serve to [http://localhost:8088]. Mock database should have the below information included.
-```{
+```
+{
 "users" : [],
 "scares" : [],
 "scareTypes" : [],
