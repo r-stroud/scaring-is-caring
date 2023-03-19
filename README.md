@@ -18,6 +18,8 @@ This project was created as a Front End Capstone project while attending Nashvil
 
 ## Project Description
 
+VIDEO LINK: https://www.loom.com/share/0bb0cf9e38c24d9691666ff361f73cb1
+
 As a horror fan it is fun finding titles to recommend to like minded friends and family. Likewise it is equally exciting to receive a good recommendation. However it can be difficult to keep up with all the recommendations. This app makes it easy to recommend anything horror related, keep track of your collections and recommendations, rate and view other ratings of "scares", and view and add a user's "fiends".
 
 ## Technologies Used
