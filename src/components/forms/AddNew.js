@@ -1,6 +1,5 @@
 import "./Forms.css"
 import "../welcome/Welcome.css"
-import { Preview } from "./Preview"
 import { useState, useEffect } from "react"
 import { Scares } from "../scares/Scares"
 
@@ -119,7 +118,7 @@ export const AddNew = ({ fetchWelcome }) => {
                                 autoFocus
                                 type="text"
                                 className="form-field add"
-                                placeholder="Please enter a title"
+                                placeholder="Enter a title"
                                 value={scareDetails.name}
                                 onChange={
                                     (evt) => {
@@ -137,7 +136,7 @@ export const AddNew = ({ fetchWelcome }) => {
                                 autoFocus
                                 type="text"
                                 className="form-field add"
-                                placeholder="Please enter an image URL"
+                                placeholder="Enter an image URL"
                                 value={scareDetails.img}
                                 onChange={
                                     (evt) => {
@@ -155,7 +154,7 @@ export const AddNew = ({ fetchWelcome }) => {
                             required
                             autoFocus
                             className="form-field"
-                            placeholder="Please enter a breif description"
+                            placeholder="Enter a breif description"
                             value={scareDetails.details}
                             onChange={
                                 (evt) => {
@@ -183,7 +182,7 @@ export const AddNew = ({ fetchWelcome }) => {
                                     }
                                 }
                             >
-                                <option value="">PLEASE SELECT A TYPE</option>
+                                <option value="">SELECT A TYPE</option>
                                 {scareType.map(x => <>
                                     <option value={x.id}>{x.type.toUpperCase()}</option>
                                 </>)}

@@ -47,7 +47,6 @@ export const Login = () => {
                 }, 2400
             )
 
-            // return () => clearTimeout(timer)
         }, []
     )
 

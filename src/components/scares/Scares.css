@@ -130,7 +130,6 @@
     background-color: rgb(23, 22, 22);
     color: white;
     height: 13%;
-    z-index: 10;
     border-radius: 10px 10px 0px 0px;
     padding-left: 15px;
     padding-top: 10px;
@@ -199,6 +198,11 @@
 .recommend-scroll {
     overflow-y: scroll;
     height: 80px;
+    border: solid rgb(189, 8, 8) 1px;
+    border-top: none;
+    width: 250px;
+    margin: auto;
+    padding: 1px 0;
 }
 
 
@@ -213,7 +217,7 @@
     z-index: 10;
     transition: 0.8s;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .recommend-fiend-container {
@@ -224,6 +228,8 @@
 .recommend-fiend-header {
     font-weight: bold;
     padding: 4px 0 0 8px;
+    color: rgb(189, 8, 8);
+    font-style: italic;
 }
 
 .recommend-fiend-item {
@@ -238,12 +244,12 @@
 }
 
 .recommend-fiend-search {
-    width: 80%;
-    margin: 4px auto;
+    width: 90%;
+    margin: 4px auto 0;
 }
 
 .recommend-textarea-container {
-    width: 80%;
+    width: 240px;
     margin: 4px auto;
 }
 
@@ -253,6 +259,7 @@
     overflow-y: scroll;
     font-family: "Spectral SC";
     width: 100%;
+    border: 1px solid rgb(189, 8, 8);
 }
 
 .recommend-button-container {
@@ -262,6 +269,14 @@
 
 .recommend-button {
     width: 100%;
+    color: white;
+    background-color: rgb(37, 35, 35);
+    transition: 0.5s;
+}
+
+.recommend-button:hover {
+    color: white;
+    background-color: rgb(189, 8, 8);
 }
 
 .recommend-button span {
@@ -281,8 +296,12 @@
 }
 
 .select-a-fiend {
-    width: 100%;
+    width: 230px;
     font-family: "Spectral SC";
+    border: rgb(189, 8, 8) 1px solid;
+    border-bottom: rgb(19, 19, 19) solid 1px;
+    padding: 0 10px;
+    font-size: 12px;
 }
 
 .collections {

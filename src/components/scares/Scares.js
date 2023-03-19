@@ -444,7 +444,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                 </section>
                 {/* recommendation */}
                 <section className="recommend-to-fiend" id={`recommendToFiend--${id}`}>
-                    <div className="recommend-fiend-header">SELECT A FIEND:</div>
+                    <div className="recommend-fiend-header">SELECT A FIEND :</div>
                     <div className="recommend-fiend-search">
                         <input
                             className="select-a-fiend"
@@ -452,7 +452,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                                 setSearch(changeEvent.target.value))
                             }
                             type="text"
-                            placeholder="SEARCH FOR A FIEND"
+                            placeholder="Search and select a name"
                         />
                     </div>
                     <div className="recommend-scroll-container">
@@ -479,7 +479,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                                 : <></>}
                         </div>
                     </div>
-                    <div className="recommend-fiend-header">ADD A COMMENT:</div>
+                    <div className="recommend-fiend-header">ADD A COMMENT :</div>
                     <div className="recommend-textarea-container">
                         <textarea
                             className="recommend-textarea"
@@ -502,7 +502,7 @@ export const Scares = ({ id, name, img, details, typeId, creatorId, fetchScares,
                                     }
                                 }
                             >
-                                <span>RECOMMEND TO:</span>
+                                <span>RECOMMEND TO</span>
                                 <span className="recommend-to-button-name">{fiendsName}</span>
                             </button>}
                     </div>

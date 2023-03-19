@@ -1,26 +1,16 @@
 import "./Fiends.css"
-import { useState, useEffect } from "react"
-import { json } from "react-router-dom"
 
-export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, test, fiendsList, }) => {
+export const FiendsProfile = ({ name, email, fiendId, fetchAll, fiendsList, }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
-
-    const [fiends, setFiends] = useState([])
-    const [filterFiends, setFilterFiends] = useState([])
-    const [del, setDel] = useState(false)
-
 
     const deleteFiend = async () => {
 
         const fiendFunction = () => {
             if (fiendsList.length > 0) {
                 const copy = fiendsList.map(x => ({ ...x }))
-                console.log(copy)
                 const filterCopy = copy.find(x => x.fiends === fiendId)
-                console.log(filterCopy)
-                console.log(filterCopy.id)
                 return filterCopy.id
             }
         }
@@ -32,9 +22,6 @@ export const FiendsProfile = ({ name, email, add, fiendId, fetchAll, noEntry, se
         fetchAll()
     }
 
-
-
-    console.log(fiendId)
     const addFiend = async () => {
 
         if (fiendId !== undefined) {

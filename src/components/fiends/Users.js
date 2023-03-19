@@ -1,7 +1,7 @@
 import "./Fiends.css"
 import { useState, useEffect } from "react"
 
-export const Users = ({ name, email, add, fiendId, fetchAll, noEntry, setTest, test }) => {
+export const Users = ({ name, email, fiendId, fetchAll }) => {
 
     const localProjectUser = localStorage.getItem("scary_user")
     const projectUserObject = JSON.parse(localProjectUser)
