@@ -56,19 +56,6 @@ export const Recommendations = () => {
                 <section className="filter-scares">
                     <div className="scares-list-title">RECOMMENDED <span>SCARES</span></div>
 
-                    {/* <section className="filter-my-scares">
-                        <label htmlFor="myScare">MY CREATIONS</label>
-                        <input
-                            type="checkbox"
-                            id="myScare"
-                            name="my-scare"
-                            value="Show My Scares"
-                            onChange={() => (
-                                setSearchMyCreations(!searchMyCreations)
-                            )}
-                        />
-                    </section> */}
-
                     <input
                         onChange={(changeEvent) => (
                             setSearch(changeEvent.target.value))
@@ -86,9 +73,11 @@ export const Recommendations = () => {
 
                                 <div key={`recommended-scare-container--${scare.scaresId}`} className="allScaresItem-bckgrnd" id="collectionItem-bckgrnd" >
 
-                                    <div className="recommended-by"> {scare.users.fullName}:<img src={require("../capstone-images/handprint.png")} /></div>
+                                    <div className="recommended-by"> <span>{scare.users.fullName}</span><img src={require("../capstone-images/handprint.png")} />
 
-                                    <div className="recommended-comment">{scare.comment} </div>
+                                        <div className="recommended-comment">{scare.comment} </div>
+
+                                    </div>
                                     <div key={`recommended-scare-item--${scare.scaresId}`} className="collectionItem allScaresItem">
                                         <Scares
                                             key={`recommended--${scare.scaresId}`}

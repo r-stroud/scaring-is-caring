@@ -163,7 +163,7 @@ export const EditForm = ({
                                         }
                                     }
                                 >
-                                    <option value="">Please select a type</option>
+                                    <option value="">Select a type</option>
                                     {scareType.map(x => <>
                                         <option value={x.id}>{x.type}</option>
                                     </>)}

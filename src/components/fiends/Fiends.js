@@ -125,6 +125,8 @@ export const Fiends = () => {
                             <div className="switch-filter" onClick={
                                 () => {
                                     setSwitchFilter(!switchFilter)
+                                    setUserSearch(document.getElementById("addFiendsSearch").value)
+                                    setSearch(document.getElementById("addFiendsSearch").value)
                                 }
                             }>{switchFilter ? "USERS" : "FIENDS"}</div>
                         </div>
@@ -152,11 +154,7 @@ export const Fiends = () => {
                                             />
                                         </>
                                     ))
-                                    : <>
-                                        {/* <FiendsProfile
-                                        noEntry={true}
-                                    /> */}
-                                    </>}
+                                    : <></>}
                             </div>
                             :
 

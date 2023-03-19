@@ -108,7 +108,6 @@ export const Collections = () => {
                                             details={scare.scares.details}
                                             typeId={scare.scares.scareTypesId}
                                             creatorId={scare.scares.usersId}
-                                            // creatorName={scare.users.fullName}
                                             fetchScares={fetchScares}
                                         />
                                     </div>
