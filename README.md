@@ -54,7 +54,21 @@ There are also numerous features I would like to add to the app itself:
 {
 "users" : [],
 "scares" : [],
-"scareTypes" : [],
+"scareTypes" :
+[
+    {
+      "id": 1,
+      "type": "film"
+    },
+    {
+      "id": 2,
+      "type": "video game"
+    },
+    {
+      "id": 3,
+      "type": "book"
+    }
+],
 "finished" : [],
 "fiends" : [],
 "recommended" : [],
